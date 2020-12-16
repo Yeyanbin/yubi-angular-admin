@@ -4,6 +4,7 @@ export const loginFormConfig = {
   class: [ 'login-form' ],
   showFormData: true,
   width: 300,
+  formName: 'Login',
   formControlItems: [
     {
       formControlType: 'input',
@@ -84,15 +85,16 @@ export const searchFormConfig = {
   class: [ ],
   showFormData: true,
   width: 500,
+  formName: 'Search',
   formControlItems: [
     {
       formControlType: 'input',
-      formControlName: 'matchID',
+      formControlName: 'bookID',
       span: 12,
       default: null,
-      preContent: 'Match ID: ',
+      preContent: 'Book ID: ',
       nzTip: {
-        error: 'Please input matchID!',
+        error: 'Please input bookID!',
       },
       inputType: 'text',
       inputIcon: '',
@@ -119,28 +121,28 @@ export const searchFormConfig = {
     },
     {
       formControlType: 'input',
-      formControlName: 'oddUserID',
+      formControlName: 'author',
       span: 12,
       default: null,
-      preContent: ' User ID: ',
+      preContent: ' Author: ',
       nzTip: {
-        error: 'Please input oddUserID!',
+        error: 'Please input author!',
       },
       inputType: 'text',
       inputIcon: '',
       placeholder: '',
       validators: [
-        Validators.required
+        // Validators.required
       ]
     },
     {
       formControlType: 'input',
-      formControlName: 'oddPassID',
+      formControlName: 'PassID',
       span: 12,
       default: null,
-      preContent: ' Pass ID: ',
+      preContent: ' Password: ',
       nzTip: {
-        error: 'Please input oddPassID!',
+        error: 'Please input PassID!',
       },
       inputType: 'password',
       inputIcon: '',

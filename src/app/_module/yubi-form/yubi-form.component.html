@@ -1,5 +1,5 @@
+<p class="title-big" *ngIf="FormConfig.formName">{{ FormConfig.formName }}</p>
 
-<p>yubi form</p>
 <form nz-form [formGroup]="validateForm" [ngClass]="FormConfig.class" [ngStyle]="{'width': FormConfig.width +'px'}">
   <!-- formControlItems -->
   <div nz-row>
