@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-
 const routes: Routes = [
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  // { path: 'pages', component:  },
-  { path: 'pages', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule) },
-  { path: 'other', loadChildren: () => import('./other-page/other-page.module').then(m => m.OtherPageModule) },
+  { path: '', pathMatch: 'full', redirectTo: 'pages' },
+  // { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
+  { path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
+  { path: 'login', loadChildren: () => import('./others/login/login.module').then(m => m.LoginModule) },
+  { path: '404', loadChildren: () => import('./others/not-found/not-found.module').then(m => m.NotFoundModule) },
 ];
 
 @NgModule({

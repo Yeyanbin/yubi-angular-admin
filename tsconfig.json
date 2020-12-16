@@ -23,6 +23,12 @@
     "paths": {
       "@interface/*": [
         "src/_interface/*"
+      ],
+      "@node_modules/*": [
+        "node_modules/*"
+      ],
+      "@module/*": [
+        "src/app/_module/*"
       ]
     }
   },

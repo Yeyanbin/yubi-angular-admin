@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "yubi-angular-template": {
+    "n": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/yubi-angular-template",
+            "outputPath": "dist/n",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,10 +28,16 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
-              "src/_globalStyles/global.scss"
+              "src/_globalStyles/theme.less",
+              "src/_globalStyles/styles.scss"
             ],
             "scripts": []
           },
@@ -68,18 +74,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "yubi-angular-template:build"
+            "browserTarget": "n:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "yubi-angular-template:build:production"
+              "browserTarget": "n:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "yubi-angular-template:build"
+            "browserTarget": "n:build"
           }
         },
         "test": {
@@ -94,7 +100,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/_globalStyles/styles.scss"
             ],
             "scripts": []
           }
@@ -116,16 +122,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "yubi-angular-template:serve"
+            "devServerTarget": "n:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "yubi-angular-template:serve:production"
+              "devServerTarget": "n:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "yubi-angular-template"
+  "defaultProject": "n"
 }

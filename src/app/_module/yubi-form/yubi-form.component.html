@@ -1,0 +1,84 @@
+
+<p>yubi form</p>
+<form nz-form [formGroup]="validateForm" [ngClass]="FormConfig.class" [ngStyle]="{'width': FormConfig.width +'px'}">
+  <!-- formControlItems -->
+  <div nz-row>
+    <div nz-col ngClass="form-item" *ngFor="let item of FormConfig.formControlItems" [nzSpan]="item.span">
+      <nz-form-item>
+        <nz-form-control 
+          [nzErrorTip]="item.nzTip.error">
+          <div nz-row>
+            <div nz-col ngClass="form-item-pre-content" [nzSpan]="item.preContent? 7 : 0">
+              <span>{{ item.preContent }}</span>
+            </div>
+            <div nz-col [nzSpan]="item.preContent? 16 : 24">
+              <!-- 在这里添加菜单复用项 -->
+              <nz-input-group *ngIf="item.formControlType == 'input'"
+                [nzPrefixIcon]="item.inputIcon">
+                <input nz-input
+                  [type]="item.inputType" 
+                  [formControlName]="item.formControlName" 
+                  [placeholder]="item.placeholder" />
+              </nz-input-group>
+              <label nz-checkbox *ngIf="item.formControlType == 'checkbox'"
+                [formControlName]="item.formControlName">
+                <span>{{ item.content }}</span>
+              </label>
+            </div>
+          </div>
+
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col 
+      *ngFor="let item of FormConfig.otherItems" 
+      [nzSpan]="item.span"
+      ngClass="form-item">
+      <a *ngIf="item.extendType == 'a'"
+        [ngClass]="item.class"> 
+          {{ item.content }} 
+      </a>
+      <p 
+        *ngIf="item.extendType == 'p'"
+        [ngClass]="item.class">
+          {{ item.content }} 
+      </p>
+      <button nz-button *ngIf="item.extendType == 'button'"
+        (click)="runFunc(item.clickFunc)"
+        [nzType]="item.buttonType"
+        [ngClass]="item.class">
+          {{ item.content }}
+      </button>
+    </div>
+  </div>
+  <p class="form-item" style="margin-top: 20px;" *ngIf="FormConfig.showFormData">
+    Form Value: {{ validateForm.value | json }}
+  </p>
+  <!-- <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your username!">
+      <nz-input-group nzPrefixIcon="user">
+        <input type="text" nz-input formControlName="userName" placeholder="Username" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-input-group nzPrefixIcon="lock">
+        <input type="password" nz-input formControlName="password" placeholder="Password" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row class="login-form-margin">
+    <div nz-col [nzSpan]="12">
+      <label nz-checkbox formControlName="remember">
+        <span>Remember me</span>
+      </label>
+    </div>
+    <div nz-col [nzSpan]="12">
+      <a class="login-form-forgot">Forgot password</a>
+    </div>
+  </div>
+  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+  Or <a> register now! </a>-->
+
+</form>
