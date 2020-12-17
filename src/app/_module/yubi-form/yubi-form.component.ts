@@ -13,7 +13,7 @@ export class YubiFormComponent implements OnInit {
 
   validateForm!: FormGroup; // FormGroup is a group of FormControl, The FormGroup instance created for this form.
 
-  runFunc(func: (arg0: any) => void): void {
+  clickFunc(func: (arg0: any) => void): void {
     // tslint:disable-next-line: forin
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty(); // 设置为脏控件
@@ -21,6 +21,11 @@ export class YubiFormComponent implements OnInit {
     }
     console.log(this.validateForm);
     func(this.validateForm);
+  }
+
+  selectFunc(func: (arg0: any, arg1: any) => void, $event: any): void {
+    func(this.validateForm, $event);
+    // console.log(this, this.validateForm);
   }
 
   constructor(private fb: FormBuilder) {

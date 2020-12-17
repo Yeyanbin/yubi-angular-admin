@@ -1,6 +1,16 @@
-import { Validators } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { IFormConfig } from '@interface/config';
+import endOfMonth from 'date-fns/endOfMonth';
 
-export const loginFormConfig = {
+// 验证器
+const NumberValidator: ValidatorFn = (control: AbstractControl): {[key: string]: any} | null => {
+  // const forbidden = nameRe.test(control.value);
+  // return forbidden ? {forbiddenName: {value: control.value}} : null;
+  return !Number(control.value) ? {forbiddenName: {value: control.value}} : null;
+};
+
+
+export const loginFormConfig: IFormConfig = {
   class: [ 'login-form' ],
   showFormData: true,
   width: 300,
@@ -9,6 +19,8 @@ export const loginFormConfig = {
     {
       formControlType: 'input',
       formControlName: 'userName',
+      // labelSpan: 0,
+      // controlSpan: 24,
       span: 24,
       default: null,
       preContent: '',
@@ -92,7 +104,7 @@ export const searchFormConfig = {
       formControlName: 'bookID',
       span: 12,
       default: null,
-      preContent: 'Book ID: ',
+      label: 'Book ID',
       nzTip: {
         error: 'Please input bookID!',
       },
@@ -108,7 +120,7 @@ export const searchFormConfig = {
       formControlName: 'sportID',
       span: 12,
       default: null,
-      preContent: ' Sport ID: ',
+      label: ' Sport',
       nzTip: {
         error: 'Please input sportID!',
       },
@@ -124,7 +136,7 @@ export const searchFormConfig = {
       formControlName: 'author',
       span: 12,
       default: null,
-      preContent: ' Author: ',
+      label: ' Author',
       nzTip: {
         error: 'Please input author!',
       },
@@ -140,7 +152,7 @@ export const searchFormConfig = {
       formControlName: 'PassID',
       span: 12,
       default: null,
-      preContent: ' Password: ',
+      label: ' Password',
       nzTip: {
         error: 'Please input PassID!',
       },
@@ -188,3 +200,185 @@ export const searchFormConfig = {
     },
   ]
 };
+
+
+export const PersonFormConfig = {
+  class: [],
+  showFormData: true,
+  width: 600,
+  formName: 'Person Form',
+  formControlItems: [
+    {
+      formControlType: 'input',
+      formControlName: 'firstName',
+      span: 12,
+      default: null,
+      label: 'First Name',
+      nzTip: {
+        error: 'Please input your first name!',
+      },
+      inputType: 'text',
+      inputIcon: '',
+      placeholder: '',
+      validators: [
+        Validators.required
+      ]
+    },
+    {
+      formControlType: 'input',
+      formControlName: 'lastName',
+      span: 12,
+      default: null,
+      label: 'Last Name',
+      nzTip: {
+        error: 'Please input your last name!',
+      },
+      inputType: 'text',
+      inputIcon: '',
+      placeholder: '',
+      validators: [
+        Validators.required
+      ]
+    },
+    {
+      formControlType: 'select',
+      formControlName: 'lastName',
+      span: 12,
+      default: null,
+      label: 'gender',
+      nzTip: {
+        // error: 'Please input your last name!',
+      },
+      selectOptions: [
+        { value: 'male', label: 'male' },
+        { value: 'female', label: 'female' },
+      ],
+      // placeholder: '',
+      validators: [
+      ],
+      selectFunc: (validateForm: any, $event: any) => {
+
+      }
+    },
+    {
+      formControlType: 'input',
+      formControlName: 'age',
+      span: 12,
+      default: null,
+      label: 'age',
+      nzTip: {
+        error: 'Please input your age!',
+      },
+      inputType: 'text',
+      inputIcon: '',
+      placeholder: '',
+      validators: [
+        Validators.required,
+        NumberValidator,
+      ]
+    },
+    {
+      formControlType: 'select',
+      formControlName: 'hobby',
+      span: 24,
+      labelSpan: 4,
+      controlSpan: 20,
+      default: [],
+      label: 'hobby',
+      nzTip: {
+        // error: 'Please input your last name!',
+      },
+      mode: 'multiple',
+      multipleList: [],
+      selectOptions: [
+        { value: '足球', label: '足球' },
+        { value: '摄影', label: '摄影' },
+        { value: '下棋', label: '下棋' },
+        { value: '篮球', label: '篮球' },
+        { value: '羽毛球', label: '羽毛球' },
+        { value: '英雄联盟', label: '英雄联盟' },
+        { value: '王者荣耀', label: '王者荣耀' },
+        { value: '看小说', label: '看小说' },
+        { value: '钓鱼', label: '钓鱼' },
+        { value: '唱歌', label: '唱歌' },
+      ],
+      validators: [
+      ],
+      selectFunc: (validateForm: any, $event: any) => {
+        // console.log(validateForm);
+        // console.log($event);
+      },
+      isNotSelected: (multipleList: string[], value: string): boolean => {
+        // console.log(listOfSelectedValue.indexOf(value) === -1);
+        return multipleList.indexOf(value) === -1;
+      }
+    },
+    {
+      formControlType: 'date-range',
+      formControlName: 'date',
+      span: 24,
+      labelSpan: 4,
+      controlSpan: 20,
+      class: [
+      ],
+      style: {
+        width: '100%'
+      },
+      default: [new Date(), new Date()],
+      label: 'Date Range',
+      nzTip: {
+        // error: 'Please input your age!',
+      },
+      ranges: { Today: [new Date(), new Date()], 'This Month': [new Date(), endOfMonth(new Date())] },
+      format: 'yyyy/MM/dd HH:mm:ss',
+      onChange: (validateForm: FormGroup, $event: any) => {
+        console.log($event);
+      },
+      validators: [
+      ]
+    },
+  ],
+  otherItems: [
+    {
+      extendType: 'button-group',
+      span: 16,
+      class: [
+      ],
+      style: {
+        width: '100%'
+      },
+      childs: [
+        {
+          extendType: 'button',
+          buttonType: 'primary',
+          content: 'search',
+          leftButtonIcon: 'to-top',
+          class: [
+          ],
+          clickFunc: (validateForm: FormGroup) => {
+            console.log(validateForm.value);
+          },
+        },
+        {
+          extendType: 'button',
+          buttonType: 'dashed',
+          content: 'reset',
+          leftButtonIcon: 'retweet',
+          class: [
+          ],
+
+          clickFunc: (validateForm: FormGroup) => {
+            validateForm.reset(
+              {
+                hobby: [],
+                date: []
+              }
+            );
+          },
+        },
+      ]
+    },
+
+  ]
+};
+
