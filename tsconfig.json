@@ -29,6 +29,12 @@
       ],
       "@module/*": [
         "src/app/_module/*"
+      ],
+      "@store/*": [
+        "src/app/_store/*"
+      ],
+      "@api/*": [
+        "src/app/_api/*"
       ]
     }
   },

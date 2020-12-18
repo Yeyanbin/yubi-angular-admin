@@ -12,7 +12,7 @@ export class FormComponent implements OnInit {
 
   loginFormConfig = {};
   searchFormConfig = {};
-  PersonFormConfig = {}
+  PersonFormConfig = {};
   constructor() { }
 
   ngOnInit(): void {

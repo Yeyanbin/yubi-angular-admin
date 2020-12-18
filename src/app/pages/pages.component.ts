@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '@api/user';
 
 @Component({
   selector: 'app-pages',
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class PagesComponent implements OnInit {
   isCollapsed = false;
 
-  constructor() { }
+  constructor(userService: UserService) {
+  }
 
   ngOnInit(): void {
   }

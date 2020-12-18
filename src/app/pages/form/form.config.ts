@@ -378,7 +378,6 @@ export const PersonFormConfig = {
         },
       ]
     },
-
   ]
 };
 
