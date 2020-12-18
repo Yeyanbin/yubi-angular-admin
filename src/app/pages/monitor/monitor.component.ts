@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getUserModule } from '../../_store/user';
+import { getUserModule } from '@store/user';
 
 @Component({
   selector: 'app-monitor',
