@@ -26,7 +26,35 @@
           </button>
           <nz-dropdown-menu #menu2="nzDropdownMenu">
             <ul nz-menu>
-              <li nz-menu-item (click)="userModule.action.logout()">logout</li>
+              <li nz-menu-item (click)="userModule.action.logout()"> 
+                <span>
+                  Log out
+                </span>
+              </li> 
+              <li nz-menu-group nzTitle="about" style="margin: 6px 5px 0 5px;border-top: 0.5px solid rgb(212, 212, 212);">
+                <ul>
+                  <li nz-menu-item >
+                    <a href="https://gitee.com/Yubi233/yubi-angular-template" target="_blank">
+                      <img style="width: 14px;margin-right: 6px;" src="https://gitee.com/static/images/logo-en.svg" srcset="">
+                      gitee
+                    </a>
+                  </li>                
+                  <li nz-menu-item >
+                    <a href="https://gitee.com/Yubi233/yubi-angular-template" target="_blank">
+                      <i nz-icon nzType="github" nzTheme="outline"></i>
+                      github
+                    </a>
+                  </li>
+                  <li nz-menu-item >
+                    <a href="https://gitee.com/Yubi233/yubi-angular-template" target="_blank">
+                      <i nz-icon nzType="book" nzTheme="outline"></i>
+                      doc
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+
             </ul>
           </nz-dropdown-menu>
         </div>

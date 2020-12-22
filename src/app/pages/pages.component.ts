@@ -11,7 +11,7 @@ import { userModule } from '@store/user';
 export class PagesComponent implements OnInit {
   isCollapsed = false;
   userModule = userModule;
-  
+
   constructor(userService: UserService) {
   }
 

@@ -1,25 +1,57 @@
-<p>table works!</p>
-<nz-table #basicTable [nzData]="tableModule.table1Data">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Address</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.id }}</td>
-      <td>{{ data.name }}</td>
-      <td>{{ data.address }}</td>
-      <td>{{ data.alias }}</td>
-
-      <!-- <td>
-        <a>Action 一 {{ data.name }}</a>
-        <nz-divider nzType="vertical"></nz-divider>
-        <a>Delete</a>
-      </td> -->
-    </tr>
-  </tbody>
-</nz-table>
+<!-- <p>table works!</p> -->
+<div nz-row>
+  <div nz-col nzSpan="12" class="table-container">
+    <nz-card nzHoverable class="table-card" [nzCover]="table1Cover">
+      <nz-card-meta nzTitle="Table 1" nzDescription="">
+      </nz-card-meta>
+    </nz-card>
+    <ng-template #table1Cover>
+      <nz-table #basicTable 
+        class="table-card-content"
+        [nzShowPagination]="false"
+        [nzScroll]="{ y: '400px' }"
+        [nzData]="tableModule.table1Data">
+        <thead>
+          <tr>
+            <th *ngFor="let item of tableModule.table1Head">{{ item }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.id }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.address }}</td>
+            <td>{{ data.alias }}</td>
+      
+          </tr>
+        </tbody>
+      </nz-table>  
+    </ng-template>
+  </div>
+  <div nz-col nzSpan="12" class="table-container">
+    <nz-card nzHoverable class="table-card" [nzCover]="table2Cover">
+      <nz-card-meta nzTitle="Table 2" nzDescription="">
+      </nz-card-meta>
+    </nz-card>
+    <ng-template #table2Cover>
+      <nz-table #basicTable
+        class="table-card-content"
+        [nzScroll]="{ y: '400px' }"
+        [nzShowPagination]="false"
+        [nzData]="tableModule.table2Data">
+        <thead>
+          <tr>
+            <th *ngFor="let item of tableModule.table2Head">{{ item }}</th>
+          </tr>          
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.name }}</td>
+            <td>{{ data.address }}</td>
+            <td>{{ data.lastLogin }}</td>
+          </tr>
+        </tbody>
+      </nz-table>  
+    </ng-template>
+  </div>
+</div>

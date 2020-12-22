@@ -15,6 +15,8 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+
 
 
 import { WelcomeModule } from './welcome/welcome.module';
@@ -37,6 +39,7 @@ registerLocaleData(en);
     YubiFormModule,
     NzDropDownModule,
     NzButtonModule,
+    NzDividerModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 

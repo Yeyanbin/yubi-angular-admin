@@ -1,0 +1,21 @@
+
+.table {
+
+  &-container {
+
+  }
+
+  &-card {
+    width: 500px;
+    position: relative;
+    left: 50%;    
+    margin-left: -250px;
+
+    &-content {
+      // overflow: auto;
+      // max-height: 400px;
+
+    }
+  }
+}
+

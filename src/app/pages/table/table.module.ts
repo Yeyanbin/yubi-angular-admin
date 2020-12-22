@@ -6,7 +6,8 @@ import { TableComponent } from './table.component';
 
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 import { YubiFormModule } from '@module/yubi-form/yubi-form.module';
 
@@ -18,6 +19,8 @@ import { YubiFormModule } from '@module/yubi-form/yubi-form.module';
     YubiFormModule,
     NzTableModule,
     NzDividerModule,
+    NzCardModule,
+    NzGridModule,
   ]
 })
 
