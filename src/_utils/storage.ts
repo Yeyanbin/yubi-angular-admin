@@ -8,6 +8,7 @@ export const setUserID  = (userID: string) => localStorage.setItem(BASE + '-' + 
 export const removeUserID = () => localStorage.removeItem(BASE + '-' + USERID_KEY);
 
 
+// tslint:disable-next-line: radix
 export const getUserTokenID = () => parseInt(localStorage.getItem(BASE + '-' + USERTOKENID_KEY) || '0');
 export const setUserTokenID  = (tokenID: string) => localStorage.setItem(BASE + '-' + USERTOKENID_KEY, tokenID);
 export const removeUserTokenID = () => localStorage.removeItem(BASE + '-' + USERTOKENID_KEY);

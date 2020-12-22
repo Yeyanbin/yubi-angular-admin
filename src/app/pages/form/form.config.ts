@@ -10,7 +10,7 @@ const NumberValidator: ValidatorFn = (control: AbstractControl): {[key: string]:
 };
 
 
-export const loginFormConfig: IFormConfig = {
+export const loginFormConfig = {
   class: [ 'login-form' ],
   showFormData: true,
   width: 300,
@@ -19,8 +19,6 @@ export const loginFormConfig: IFormConfig = {
     {
       formControlType: 'input',
       formControlName: 'userName',
-      // labelSpan: 0,
-      // controlSpan: 24,
       span: 24,
       default: null,
       preContent: '',

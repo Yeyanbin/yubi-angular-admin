@@ -15,6 +15,7 @@ export interface IFormControlItem extends IFunc{
   formControlName: string;
   span: number;
   labelSpan?: number;
+  label?: string;
   controlSpan?: number;
   default: null | any;
   preContent?: string;
@@ -22,6 +23,10 @@ export interface IFormControlItem extends IFunc{
   validators: Array<ValidatorFn>;
   class?: string[];
   content?: string;
+
+  style?: {
+    [key: string]: string;
+  };
 
   // input
   inputType?: string;
@@ -34,12 +39,22 @@ export interface IFormControlItem extends IFunc{
   selectOptions?: {
     value: string;
     label: string;
-  };
+  }[];
+  multipleList?: any[];
   selectMode?: string;
+  mode?: string;
+
+  // date-ranges
+  ranges?: any;
+  format?: any;
 
   // func
   clickFunc?: (validateForm: any) => void;
   selectFunc?: (validateForm: any, $event: any) => void;
+  onChange?: (validateForm: any, $event: any) => void;
+
+  // [key: string]: (...arg: any[]) => any;
+
 }
 
 export interface ITip {
@@ -50,13 +65,18 @@ export interface ITip {
 export interface IOtherItem extends IFunc{
   extendType: string;
   span: number;
-  content: string;
-  class: string[];
+  content?: string;
+  class?: string[];
 
   // button
   buttonType?: string;
   leftButtonIcon?: string;
   rightButtonIcon?: string;
+
+  style?: any;
+
+  // select
+  childs?: any[];
 }
 
 interface IFunc {
