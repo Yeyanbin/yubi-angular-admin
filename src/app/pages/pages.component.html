@@ -16,6 +16,20 @@
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
         </span>
+        <div class="app-header-user">
+          <span style="font-size: 16px;margin-right: 10px;">{{ userModule.userID }}</span>
+          <button nz-button nz-dropdown 
+            [nzDropdownMenu]="menu2" 
+            nzShape="circle"
+            nzPlacement="bottomRight">
+            <i nz-icon nzType="user" style="font-size: 20px;"></i>
+          </button>
+          <nz-dropdown-menu #menu2="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item (click)="userModule.action.logout()">logout</li>
+            </ul>
+          </nz-dropdown-menu>
+        </div>
       </div>
     </nz-header>
     <nz-content>
@@ -25,3 +39,4 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
+

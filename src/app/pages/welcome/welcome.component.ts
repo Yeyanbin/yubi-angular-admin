@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getUserModule } from '@store/user';
+import { userModule } from '@store/user';
 
 @Component({
   selector: 'app-welcome',
@@ -14,7 +14,8 @@ export class WelcomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.userModule = getUserModule();
+    // this.userModule = getUserModule();
+    this.userModule = userModule;
   }
 
   updateUserID(): void {

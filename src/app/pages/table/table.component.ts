@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tableModule } from '@store/table';
 
 @Component({
   selector: 'app-table',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
+  tableModule = tableModule;
   constructor() { }
 
   ngOnInit(): void {

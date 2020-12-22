@@ -13,6 +13,9 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
 
 import { WelcomeModule } from './welcome/welcome.module';
 import { SidebarComponent } from './_component/sidebar/sidebar.component';
@@ -32,6 +35,8 @@ registerLocaleData(en);
     HttpClientModule,
     WelcomeModule,
     YubiFormModule,
+    NzDropDownModule,
+    NzButtonModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 

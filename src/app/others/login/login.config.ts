@@ -1,8 +1,8 @@
 import { AbstractControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { IFormConfig } from '@interface/config';
-import { getUserModule } from '@store/user';
+import { userModule } from '@store/user';
 
-const userModule = getUserModule();
+// const userModule = getUserModule();
 
 export const loginFormConfig: IFormConfig = {
   class: [ 'login-form' ],
@@ -77,7 +77,7 @@ export const loginFormConfig: IFormConfig = {
       clickFunc: (validateForm: any) => {
         // login function
         const params = validateForm.value;
-        const success = userModule.action.login(params.userName, params.password)
+        const success = userModule.action.login(params.userName, params.password, params.remember);
         if ( success ) {
           // true
         } else {

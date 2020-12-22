@@ -1,39 +1,57 @@
-import { Injectable } from '@angular/core';
-import { UserService } from '@api/user';
-import { IAction, Module } from './basis';
+import { IAction, Module, use } from './base';
+import { getUserID, getUserTokenID, removeUserID, removeUserTokenID, setUserID, setUserTokenID } from '@utils/storage';
 
+const tool = use();
 interface IUserState {
   userID: string;
+  userPwd: string;
   token: string;
   tokenID: number;
 }
 
 const userState: IUserState = {
   userID: 'test',
+  userPwd: '',
   token: 'g',
   tokenID: 0
 };
 
-let userService: UserService;
 
 const userAction: IAction = {
   setUserID: (userID: string): void => {
     userState.userID = userID;
   },
-  login: (userID: string, passID: string): boolean => {
+  login: (userID: string, passID: string, remember: boolean): boolean => {
     let success = false;
 
-    userService.login(userID, passID).subscribe(
+    tool.userService?.login(userID, passID).subscribe(
       (res: any) => {
         // tslint:disable-next-line: no-conditional-assignment
         if ( success = res.success ) {
-          userAction.setUserId(userID);
+          userAction.setUserID(userID);
           userState.token = res.token;
           userState.tokenID = res.tokenID;
+
+          if (remember) {
+            setUserID(userID);
+            setUserTokenID(res.tokenID);
+          }
+          tool.router?.navigateByUrl('/');
         }
       }
     );
     return success;
+  },
+  logout: () => {
+    removeUserID();
+    removeUserTokenID();
+    userState.userID = '';
+    userState.tokenID = 0;
+    tool.router?.navigateByUrl('/login');
+  },
+  init: () => {
+    userState.userID = getUserID() || '';
+    userState.tokenID = getUserTokenID() || 0;
   }
 };
 
@@ -46,13 +64,18 @@ class UserModule extends Module<IUserState> {
     return this.state.userID;
   }
 
-  setUserService = (service: UserService) => {
-    userService = service;
+  public get userPwd(): string {
+    return this.state.userPwd;
   }
+
+  public get tokenID(): number {
+    return this.state.tokenID;
+  }
+
+  public get token(): string {
+    return this.state.token;
+  }
+
 }
 
-const userModule = new UserModule();
-
-export const getUserModule = () => {
-  return userModule;
-};
+export const userModule = new UserModule();

@@ -10,10 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryDataService } from '@api/mock/mock';
 import { httpInterceptorProviders } from '@api/http-interceptors/index';
-import { LoginGuard } from './_guard/Permissions';
 
 
 registerLocaleData(zh);
@@ -33,7 +30,6 @@ registerLocaleData(zh);
   providers: [
     // 拦截器
     httpInterceptorProviders,
-    
   ],
   bootstrap: [AppComponent]
 })

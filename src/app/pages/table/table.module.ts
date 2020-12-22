@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { TableRoutingModule } from './table-routing.module';
 import { TableComponent } from './table.component';
 
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+
+
 import { YubiFormModule } from '@module/yubi-form/yubi-form.module';
 
 @NgModule({
@@ -11,7 +15,10 @@ import { YubiFormModule } from '@module/yubi-form/yubi-form.module';
   imports: [
     CommonModule,
     TableRoutingModule,
-    YubiFormModule
+    YubiFormModule,
+    NzTableModule,
+    NzDividerModule,
   ]
 })
+
 export class TableModule { }

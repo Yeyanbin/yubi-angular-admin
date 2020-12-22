@@ -35,6 +35,9 @@
       ],
       "@api/*": [
         "src/app/_api/*"
+      ],
+      "@utils/*": [
+        "src/_utils/*"
       ]
     }
   },
