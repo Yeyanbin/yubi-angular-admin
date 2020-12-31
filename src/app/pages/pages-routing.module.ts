@@ -11,7 +11,9 @@ const routes: Routes = [
       { path: 'welcome', component: WelcomeComponent },
       { path: 'monitor', loadChildren: () => import('./monitor/monitor.module').then(m => m.MonitorModule) },
       { path: 'table', loadChildren: () => import('./table/table.module').then(m => m.TableModule) },
-      { path: 'form', loadChildren: () => import('./form/form.module').then(m => m.FormModule) }
+      { path: 'form', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
+      { path: 'setting', loadChildren: () => import('./setting/setting.module').then(m => m.SettingModule) },
+      { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
     ]
   },
 ];
@@ -20,4 +22,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule { }
+export class PagesRoutingModule {
+}

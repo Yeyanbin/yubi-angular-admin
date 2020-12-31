@@ -35,7 +35,6 @@ registerLocaleData(en);
     NzMenuModule,
     FormsModule,
     HttpClientModule,
-    WelcomeModule,
     YubiFormModule,
     NzDropDownModule,
     NzButtonModule,

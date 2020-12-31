@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { userModule } from '@store/user';
+import { layoutModule } from '@store/layout';
 
 @Component({
   selector: 'app-welcome',
@@ -22,4 +23,8 @@ export class WelcomeComponent implements OnInit {
     this.userModule.action.setUserID('newId' + this.num++);
   }
 
+  updateLang(): void {
+    layoutModule.lang === 'en-uk' ? layoutModule.lang = 'zh-cn' : layoutModule.lang = 'en-uk';
+    console.log(layoutModule.lang);
+  }
 }

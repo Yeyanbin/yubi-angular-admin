@@ -1,7 +1,6 @@
 {
-  "code": 200,
-  "data": {
-    "msg": "success",
-    "tokenID": 1
-  }
+  "msg": "Hello",
+  "success": true,
+  "token": "admin-token",
+  "tokenID": 1
 }

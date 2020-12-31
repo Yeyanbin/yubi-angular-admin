@@ -133,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "Yubi admin template"
+  "defaultProject": "Yubi admin template",
+  "cli": {
+    "analytics": false
+  }
 }

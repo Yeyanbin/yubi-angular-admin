@@ -16,12 +16,11 @@ const userState: IUserState = {
   tokenID: 0
 };
 
-
 const userAction: IAction = {
   setUserID: (userID: string): void => {
     userState.userID = userID;
   },
-  login: (userID: string, passID: string, remember: boolean): boolean => {
+  login: (userID: string, passID: string, remember: boolean = false): boolean => {
     let success = false;
 
     tool.userService?.login(userID, passID).subscribe(
@@ -36,6 +35,7 @@ const userAction: IAction = {
             setUserID(userID);
             setUserTokenID(res.tokenID);
           }
+
           tool.router?.navigateByUrl('/');
         }
       }
@@ -75,7 +75,6 @@ class UserModule extends Module<IUserState> {
   public get token(): string {
     return this.state.token;
   }
-
 }
 
 export const userModule = new UserModule();
