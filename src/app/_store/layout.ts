@@ -83,7 +83,8 @@ class LayoutModule extends Module<ILayoutState> {
   public set lang(v: langType) {
     this.state.lang = v;
     setLocalLang(v);
-    window.location.reload();
+    // window.location.reload(); reload的静态页面部署会出现问题
+    window.location.replace('./');
   }
 }
 

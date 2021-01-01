@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "show": "ng build --prod --base-href  \"https://yubi233.gitee.io/yubi-angular-admin/\"",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
