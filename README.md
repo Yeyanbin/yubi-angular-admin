@@ -1,27 +1,38 @@
-# Yubi-angular-admin
+<h1 style="text-align: center"> Yubi-angular-admin </h1>
+<h6 style="text-align: center"> 这是Angular11的通用后台模版解决方案，开箱即用，结构清晰。
+  <p style="color: grey; font-size: 12px">（后两个仅仅针对本作者而言）<p> 
+</h6>
+<h6 style="text-align: center">由小萌新Yubi开发和维护。
+  <p style="color: #ababab; font-size: 12px">（即，不断写BUG和制造更多的BUG）<p> 
+</h6>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+---
+<div style="text-align: center;margin:-15px 0 30px 0">
+  <span>
+    <img src="https://img.shields.io/badge/@angular/cli-11.0.2-green.svg">
+  </span>
+  <span>
+    <img src="https://img.shields.io/badge/typescript-4.0.2-green.svg">
+  </span>
+  <span>
+    <img src="https://img.shields.io/badge/tslint-6.1.0-green.svg">
+  </span>
+  <span>
+    <img src="https://img.shields.io/badge/ng zorro antd-10.2.1-green.svg">
+  </span>
+</div>
 
-## Development server
+![image](./docs/main.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[在线使用](https://yubi233.gitee.io/yubi-angular-admin)
 
-## Code scaffolding
+### 特征
+- **TypeScript**
+- **合理的目录结构** <a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px" href="./docs/"> 萌新自认为  → 介绍文档 </a>
+- **国际化**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 萌新自创解决多语言方案  → 介绍文档</a>
+- **状态管理工具**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 仿Vuex的状态管理工具  → 介绍文档</a>
+- **路由守卫**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 鉴权  → 介绍</a>
+- **利用请求拦截实现本地数据调试方案**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 就是Mock  → 介绍文档</a>
+- **配置化封装antd表单**     <img style="margin-bottom: -3px" src="https://img.shields.io/badge/目前进度-等待重构-orange.svg"/>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

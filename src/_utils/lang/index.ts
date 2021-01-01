@@ -1,5 +1,3 @@
-// import { layoutModule } from '@store/layout';
-
 import { getLocalLang } from '@utils/storage';
 
 export let LOCAL_LANG: langType = getLocalLang() || 'en-uk';
@@ -144,7 +142,3 @@ export let text: IText = new Proxy(proxyData, {
     }
   }
 });
-
-export const update = () => {
-  console.log('更新text');
-};

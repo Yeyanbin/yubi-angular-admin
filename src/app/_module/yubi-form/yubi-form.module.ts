@@ -27,7 +27,6 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzSelectModule,
     NzIconModule,
     NzDatePickerModule,
-
   ],
   providers: [FormBuilder],
   exports: [
