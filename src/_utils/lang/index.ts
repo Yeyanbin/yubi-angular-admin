@@ -1,6 +1,8 @@
-import { layoutModule } from '@store/layout';
+// import { layoutModule } from '@store/layout';
 
-export let LOCAL_LANG: langType = 'en-uk';
+import { getLocalLang } from '@utils/storage';
+
+export let LOCAL_LANG: langType = getLocalLang() || 'en-uk';
 const DEFAULT_LANG: langType = 'zh-cn';
 
 
@@ -49,18 +51,7 @@ const data: lang = {
       setting: '设置'
     }
   },
-  'zh-hk': {
-    menu: {
-      dashboard: 'Dashboard',
-      welcome: 'Welcome',
-      monitor: 'Monitor',
-      users: 'users',
-      component: 'Component',
-      table: 'Table',
-      form: 'Form',
-      setting: 'Setting',
-    }
-  },
+  'zh-hk': { },
   'en-uk': {
     user: { name: 'Horse' },
     form: {
@@ -84,8 +75,8 @@ const proxyData = data;
 
 export let text: IText = new Proxy(proxyData, {
   get(target: lang, propKey: string): IText {
-    if (propKey in target[layoutModule.lang]) {
-      return target[layoutModule.lang][propKey];
+    if (propKey in target[LOCAL_LANG]) {
+      return target[LOCAL_LANG][propKey];
     } else {
       // LOCAL_LANG 不存在，使用默认语言
       return target[DEFAULT_LANG][propKey];

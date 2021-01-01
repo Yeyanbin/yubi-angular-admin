@@ -1,16 +1,24 @@
-import { langType, update } from '@utils/lang';
+import { langType } from '@utils/lang';
+import { setLocalLang } from '@utils/storage';
 import { IAction, Module, use } from './base';
+import { getLocalLang } from '@utils/storage';
 
 const tool = use();
+
+interface IKeyDown {
+  [arg: string]: boolean;
+}
 
 interface ILayoutState {
   isCollapsed: boolean;
   lang: langType;
+  keyDown: IKeyDown;
 }
 
 const layoutState: ILayoutState = {
   isCollapsed: false,
-  lang: 'en-uk',
+  lang: getLocalLang() || 'en-uk',
+  keyDown: {}
 };
 
 const layoutAction: IAction = {
@@ -21,8 +29,43 @@ class LayoutModule extends Module<ILayoutState> {
 
   constructor() {
     super(layoutState, layoutAction);
+    this.init();
   }
 
+  private init(): void {
+
+    document.onkeydown = (e: KeyboardEvent) => {
+      // tslint:disable: no-unused-expression
+      const keyDown = this.state.keyDown;
+
+      if ( !keyDown[e.key] ) {
+        keyDown[e.key] = true;
+        console.log(this.state.keyDown);
+
+        // ctrl+
+        if ( keyDown.Control ) {
+          // 绑定快捷键
+          keyDown.q && (this.isCollapsed = !this.isCollapsed);
+          keyDown[1] && tool.router?.navigateByUrl('/pages');
+          keyDown[2] && tool.router?.navigateByUrl('/pages/monitor');
+          keyDown[3] && tool.router?.navigateByUrl('/pages/users');
+          keyDown[4] && tool.router?.navigateByUrl('/pages/table');
+          keyDown[5] && tool.router?.navigateByUrl('/pages/form');
+          keyDown[6] && tool.router?.navigateByUrl('/pages/setting');
+
+          // 保留原生快捷键
+          !(keyDown.z || keyDown.x || keyDown.c || keyDown.v) && e.preventDefault();
+        }
+      }else {
+        // 重复触发阻止
+        e.preventDefault();
+      }
+    };
+    document.onkeyup = (e: KeyboardEvent) => {
+      this.state.keyDown[e.key] = false;
+      e.preventDefault();
+    };
+  }
 
   public get isCollapsed(): boolean {
     return this.state.isCollapsed;
@@ -39,7 +82,8 @@ class LayoutModule extends Module<ILayoutState> {
 
   public set lang(v: langType) {
     this.state.lang = v;
-    update();
+    setLocalLang(v);
+    window.location.reload();
   }
 }
 

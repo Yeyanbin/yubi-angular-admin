@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '**', loadChildren: () => import('./others/not-found/not-found.module').then(m => m.NotFoundModule) },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
   providers: [LoginGuard]
 })
