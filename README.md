@@ -1,9 +1,9 @@
 <h1 align="center" style="text-align: center"> Yubi-angular-admin </h1>
 <h6  align="center" style="text-align: center"> 这是Angular11的通用后台模版解决方案，开箱即用，结构清晰。
-  <p  align="center" style="color: grey; font-size: 12px">（后两个仅仅针对本作者而言）<p> 
+  <p  align="center" class="tree-commit-link" style="color: grey; font-size: 12px">（后两个仅仅针对本作者而言）<p> 
 </h6>
 <h6  align="center" style="text-align: center">由小萌新Yubi开发和维护。
-  <p  align="center" style="color: #ababab; font-size: 12px">（即，不断写BUG和制造更多的BUG）<p> 
+  <p  align="center" class="tree-commit-link" style="color: #ababab; font-size: 12px">（即，不断写BUG和制造更多的BUG）<p> 
 </h6>
 
 ---
