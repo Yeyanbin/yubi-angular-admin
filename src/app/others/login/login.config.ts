@@ -1,14 +1,15 @@
 import { AbstractControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { IFormConfig } from '@interface/config';
 import { userModule } from '@store/user';
-
+import { text } from '@utils/lang';
 // const userModule = getUserModule();
 
+// tslint:disable: no-non-null-assertion
 export const loginFormConfig: IFormConfig = {
   class: [ 'login-form' ],
   showFormData: true,
   width: 300,
-  formName: 'Login',
+  formName: text.user!.loginTitle,
   formControlItems: [
     {
       formControlType: 'input',
@@ -23,7 +24,7 @@ export const loginFormConfig: IFormConfig = {
       },
       inputType: 'text',
       inputIcon: 'user',
-      placeholder: 'Username',
+      placeholder: text.user?.username,
       validators: [
         Validators.required
       ]
@@ -39,6 +40,7 @@ export const loginFormConfig: IFormConfig = {
       },
       inputType: 'password',
       inputIcon: 'lock',
+      placeholder: text.user?.password,
       validators: [
         Validators.required
       ]
@@ -50,7 +52,7 @@ export const loginFormConfig: IFormConfig = {
       default: true,
       preContent: '',
       nzTip: {},
-      content: 'Remember me',
+      content: text.user?.rememberMe,
       validators: []
     }
   ],
@@ -63,13 +65,13 @@ export const loginFormConfig: IFormConfig = {
       class: [
         'login-form-forgot'
       ],
-      content: 'Forgot password'
+      content: text.user?.forgetPwd
     },
     {
       extendType: 'button',
       span: 24,
       buttonType: 'primary',
-      content: 'Log in',
+      content: text.user?.login,
       class: [
         'login-form-button',
         'login-form-margin'
@@ -89,7 +91,7 @@ export const loginFormConfig: IFormConfig = {
       extendType: 'a',
       span: 12,
       class: [],
-      content: 'register now!'
+      content: text.user?.register
     }
   ]
 };

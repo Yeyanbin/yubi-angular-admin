@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { userModule } from '@store/user';
 import { layoutModule } from '@store/layout';
+import { langType, text } from '@utils/lang';
 
 @Component({
   selector: 'app-welcome',
@@ -10,21 +11,18 @@ import { layoutModule } from '@store/layout';
 
 export class WelcomeComponent implements OnInit {
 
-  userModule: any;
-  num = 1;
+  text = text;
+  userModule = userModule;
+  layoutModule = layoutModule;
+
+  langs: {value: langType, label: string}[] = [
+    // tslint:disable: no-non-null-assertion
+    { value: 'zh-cn', label: text.lang!.CN },
+    { value: 'en-uk', label: text.lang!.EN },
+  ];
   constructor() { }
 
   ngOnInit(): void {
-    // this.userModule = getUserModule();
-    this.userModule = userModule;
   }
 
-  updateUserID(): void {
-    this.userModule.action.setUserID('newId' + this.num++);
-  }
-
-  updateLang(): void {
-    layoutModule.lang === 'en-uk' ? layoutModule.lang = 'zh-cn' : layoutModule.lang = 'en-uk';
-    console.log(layoutModule.lang);
-  }
 }

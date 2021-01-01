@@ -1,6 +1,21 @@
-<p>weicome</p>
-<p>userId: {{ userModule.userID }}</p>
-<!-- <button (click)="updateUserID()">add 1</button>
-<button (click)="userModule.action.setUserID('BBBB')">add 2</button> -->
-<button (click)="userModule.action.logout()">logout</button>
-<button (click)="updateLang()">lang</button>
+<div class="title-big">{{ text.user?.welcome(userModule.userID ) }}</div>
+
+<!-- <button (click)="userModule.action.logout()">{{ text.user?.logout }}</button> -->
+<div style="padding: 20px 0">
+  <nz-select [(ngModel)]="layoutModule.lang">
+    <ng-container *ngFor="let item of langs">
+      <nz-option [nzValue]="item.value" [nzLabel]="item.label"></nz-option>
+    </ng-container>    
+    
+  </nz-select>
+</div>
+
+<div style="width: 500px;">
+  <nz-list nzBordered [nzHeader]="text.layout?.shortcutKey">
+    <nz-list-item *ngFor="let item of text.layout?.shortcutKeyList">
+      <span nz-typography><mark>{{ item.key }}</mark></span>
+      {{ item.describe }}
+    </nz-list-item>
+  </nz-list>
+
+</div>
