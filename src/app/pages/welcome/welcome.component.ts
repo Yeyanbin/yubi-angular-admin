@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { userModule } from '@store/user';
 import { layoutModule } from '@store/layout';
 import { langType, text } from '@utils/lang';
+import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 
 @Component({
   selector: 'app-welcome',
@@ -19,6 +20,11 @@ export class WelcomeComponent implements OnInit {
     // tslint:disable: no-non-null-assertion
     { value: 'zh-cn', label: text.lang!.CN },
     { value: 'en-uk', label: text.lang!.EN },
+  ];
+
+  themes: { value: NzMenuThemeType, label: string }[] = [
+    { value: 'dark', label: text.layout!.theme.dark },
+    { value: 'light', label: text.layout!.theme.light },
   ];
   constructor() { }
 

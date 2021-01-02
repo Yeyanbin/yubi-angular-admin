@@ -1,7 +1,8 @@
 import { langType } from '@utils/lang';
-import { setLocalLang } from '@utils/storage';
+import { getLocalTheme, setLocalLang, setLocalTheme } from '@utils/storage';
 import { IAction, Module, use } from './base';
 import { getLocalLang } from '@utils/storage';
+import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 
 const tool = use();
 
@@ -13,12 +14,14 @@ interface ILayoutState {
   isCollapsed: boolean;
   lang: langType;
   keyDown: IKeyDown;
+  siderTheme: NzMenuThemeType;
 }
 
 const layoutState: ILayoutState = {
   isCollapsed: false,
   lang: getLocalLang() || 'en-uk',
-  keyDown: {}
+  keyDown: {},
+  siderTheme: getLocalTheme() || 'light',
 };
 
 const layoutAction: IAction = {
@@ -74,6 +77,16 @@ class LayoutModule extends Module<ILayoutState> {
 
   public set isCollapsed(v: boolean) {
     this.state.isCollapsed = v;
+  }
+
+
+  public get siderTheme(): NzMenuThemeType {
+    return this.state.siderTheme;
+  }
+
+  public set siderTheme(v: NzMenuThemeType) {
+    this.state.siderTheme = v;
+    setLocalTheme(v);
   }
 
   public get lang(): langType {

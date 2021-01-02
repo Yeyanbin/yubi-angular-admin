@@ -1,14 +1,19 @@
 
-  <div class="sidebar-logo">
+  <div class="sidebar-logo" 
+    [ngClass]="{'dark': layoutModule.siderTheme === 'dark', 'light': layoutModule.siderTheme === 'light'}">
     <a href="https://gitee.com/Yubi233/yubi-angular-template" target="_blank">
       <h1>Yubi admin template of NG</h1>
     </a>
   </div>
-  <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
-    <ng-container *ngFor="let item of items">
-      <li *ngIf="item.type == 'submenu'; else menuItem" nz-submenu nzOpen [nzTitle]="item.title" [nzIcon]="item.icon">
+  <ul nz-menu [nzTheme]="layoutModule.siderTheme" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+    <ng-container *ngFor="let item of menu.items">
+      <li *ngIf="item.type == 'submenu'; else menuItem" 
+          nz-submenu nzOpen 
+          [nzTitle]="item.title" 
+          [nzIcon]="item.icon">
         <ul>
-          <li nz-menu-item nzMatchRouter *ngFor="let child of item.childs">
+          <li nz-menu-item nzMatchRouter 
+            *ngFor="let child of item.childs">
             <a [routerLink]="child.path">{{ child.name }}</a>
           </li>
         </ul>
@@ -17,11 +22,7 @@
         <li nz-menu-item nzMatchRouter>
           <a [routerLink]="item.path">
             <i nz-icon [nzType]="item.icon"></i>
-            <span [style]="{
-              display: {
-                
-              }
-            }">
+            <span>
               {{ item.name }}
             </span>
           </a>

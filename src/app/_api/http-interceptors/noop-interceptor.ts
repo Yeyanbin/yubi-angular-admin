@@ -12,7 +12,6 @@ export class NoopInterceptor implements HttpInterceptor {
 
     // 通过拦截器拦截 api/login 请求
     if ( req.url === 'api/login' ) {
-      console.log('this is login');
 
       // 自己提供数据
       return of(new HttpResponse({

@@ -1,10 +1,13 @@
-import { langType } from "./lang";
+import { NzMenuThemeType } from 'ng-zorro-antd/menu';
+import { langType } from './lang';
 
 const BASE = 'ng-yubi-template';
 
 const USERID_KEY = 'userid';
 const USERTOKENID_KEY = 'user-tokenid';
 const LOCAL_LANG_KEY = 'local-lang';
+const LOCAL_THEME_KEY = 'local-theme';
+
 
 
 export const getUserID = () => localStorage.getItem(BASE + '-' + USERID_KEY);
@@ -21,3 +24,7 @@ export const removeUserTokenID = () => localStorage.removeItem(BASE + '-' + USER
 export const getLocalLang = (): langType => localStorage.getItem(BASE + '-' + LOCAL_LANG_KEY) as langType;
 export const setLocalLang  = (lang: langType) => localStorage.setItem(BASE + '-' + LOCAL_LANG_KEY, lang);
 export const removeLocalLang = () => localStorage.removeItem(BASE + '-' + LOCAL_LANG_KEY);
+
+export const getLocalTheme = (): NzMenuThemeType => localStorage.getItem(BASE + '-' + LOCAL_THEME_KEY) as NzMenuThemeType;
+export const setLocalTheme  = (theme: NzMenuThemeType) => localStorage.setItem(BASE + '-' + LOCAL_THEME_KEY, theme);
+export const removeLocalTheme = () => localStorage.removeItem(BASE + '-' + LOCAL_THEME_KEY);

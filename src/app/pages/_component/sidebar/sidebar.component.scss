@@ -9,6 +9,21 @@
   transition: all .3s;
 }
 
+.dark {
+  background: #001529;
+}
+
+.dark h1 {
+  color: #fff;
+}
+
+.light {
+  background: #fff;
+}
+
+.light h1 {
+  color: #000000d9;
+}
 
 .sidebar-logo img {
   display: inline-block;
@@ -20,7 +35,6 @@
 .sidebar-logo h1 {
   display: inline-block;
   margin: 0 0 0 20px;
-  color: #fff;
   font-weight: 600;
   font-size: 14px;
   font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;

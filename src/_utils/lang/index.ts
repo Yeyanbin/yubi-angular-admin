@@ -21,6 +21,12 @@ export interface IText {
       key: string,
       describe: string;
     }>,
+    langSelect: string;
+    themeSelect: string;
+    theme: {
+      dark: string;
+      light: string;
+    }
   };
   user?: {
     welcome: (name: string) => string,
@@ -61,7 +67,13 @@ const data: lang = {
       shortcutKeyList: [
         { key: 'ctrl+q', describe: '收缩菜单' },
         { key: 'ctrl+数字键', describe: '按菜单顺序导航' },
-      ]
+      ],
+      langSelect: '语言',
+      themeSelect: '主题',
+      theme: {
+        dark: '暗夜',
+        light: '亮白',
+      }
     },
     user: {
       welcome: (name) => '欢迎，' + name + '!',
@@ -100,7 +112,13 @@ const data: lang = {
       shortcutKeyList: [
         { key: 'ctrl+q', describe: 'Stretch or shrink the menu.' },
         { key: 'ctrl+number', describe: 'Navigate by menu order.' },
-      ]
+      ],
+      langSelect: 'language',
+      themeSelect: 'theme',
+      theme: {
+        dark: 'dark',
+        light: 'light',
+      }
     },
     user: {
       welcome: (name) => 'Welcome, ' + name + '!',

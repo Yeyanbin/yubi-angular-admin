@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { menu } from '../../pages.menu';
+import { layoutModule } from '@store/layout';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,19 +11,17 @@ export class SidebarComponent implements OnInit {
 
   constructor() { }
 
-  items: any[] = [];
-  theme = 'dark';
-  mode = 'inline';
-
+  // items: any[] = [];
+  // theme: NzMenuThemeType = 'light';
+  // mode = 'inline';
+  menu = menu;
+  layoutModule = layoutModule;
 
   @Input()
   isCollapsed!: boolean;
 
   ngOnInit(): void {
-    this.theme = menu.theme;
-    this.mode = menu.mode;
-    this.items = menu.items;
-    console.log(this.items);
+
   }
 
 }
