@@ -13,15 +13,18 @@ interface IKeyDown {
 interface ILayoutState {
   isCollapsed: boolean;
   lang: langType;
-  keyDown: IKeyDown;
   siderTheme: NzMenuThemeType;
+  keyDown: IKeyDown;
+  keyDownFunc: { [func: string]: () => void};
 }
 
 const layoutState: ILayoutState = {
   isCollapsed: false,
   lang: getLocalLang() || 'en-uk',
-  keyDown: {},
   siderTheme: getLocalTheme() || 'light',
+
+  keyDown: {},
+  keyDownFunc: {},
 };
 
 const layoutAction: IAction = {
@@ -46,7 +49,7 @@ class LayoutModule extends Module<ILayoutState> {
         console.log(this.state.keyDown);
 
         // ctrl+
-        if ( keyDown.Control ) {
+        if ( keyDown.z ) {
           // 绑定快捷键
           keyDown.q && (this.isCollapsed = !this.isCollapsed);
           keyDown[1] && tool.router?.navigateByUrl('/pages');
@@ -57,11 +60,11 @@ class LayoutModule extends Module<ILayoutState> {
           keyDown[6] && tool.router?.navigateByUrl('/pages/setting');
 
           // 保留原生快捷键
-          !(keyDown.z || keyDown.x || keyDown.c || keyDown.v) && e.preventDefault();
+          !( keyDown.Control ) && e.preventDefault();
         }
       }else {
         // 重复触发阻止
-        e.preventDefault();
+        keyDown.z && e.preventDefault();
       }
     };
     document.onkeyup = (e: KeyboardEvent) => {
@@ -98,6 +101,11 @@ class LayoutModule extends Module<ILayoutState> {
     setLocalLang(v);
     // window.location.reload(); reload的静态页面部署会出现问题
     window.location.replace('./');
+  }
+
+
+  public get keyDownFunc(): { [func: string]: () => void} {
+    return this.state.keyDownFunc;
   }
 }
 

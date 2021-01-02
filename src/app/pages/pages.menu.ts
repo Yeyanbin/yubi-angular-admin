@@ -1,15 +1,11 @@
 import { text } from '@utils/lang';
-import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 
 interface IMenu {
-  theme: NzMenuThemeType;
-  mode: string;
   items: Array<any>;
 }
 
 export const menu: IMenu = {
-  theme: 'light',
-  mode: 'inline',
+
   items: [
     {
       type: 'submenu',

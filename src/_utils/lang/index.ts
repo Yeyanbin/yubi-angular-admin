@@ -65,8 +65,8 @@ const data: lang = {
     layout: {
       shortcutKey: '快捷键',
       shortcutKeyList: [
-        { key: 'ctrl+q', describe: '收缩菜单' },
-        { key: 'ctrl+数字键', describe: '按菜单顺序导航' },
+        { key: 'Z + Q', describe: '收缩菜单' },
+        { key: 'Z + 数字键', describe: '按菜单顺序导航' },
       ],
       langSelect: '语言',
       themeSelect: '主题',
@@ -101,7 +101,8 @@ const data: lang = {
       setting: '设置',
     }
   },
-  'zh-hk': { },
+  'zh-hk': {
+  },
   'en-uk': {
     lang: {
       CN: 'Chinese',
@@ -110,8 +111,8 @@ const data: lang = {
     layout: {
       shortcutKey: 'Shortcut Keys',
       shortcutKeyList: [
-        { key: 'ctrl+q', describe: 'Stretch or shrink the menu.' },
-        { key: 'ctrl+number', describe: 'Navigate by menu order.' },
+        { key: 'Z + Q', describe: 'Stretch or shrink the menu.' },
+        { key: 'Z + number', describe: 'Navigate by menu order.' },
       ],
       langSelect: 'language',
       themeSelect: 'theme',
