@@ -14,8 +14,6 @@ export const loginFormConfig: IFormConfig = {
     {
       formControlType: 'input',
       formControlName: 'userName',
-      // labelSpan: 0,
-      // controlSpan: 24,
       span: 24,
       default: null,
       preContent: '',

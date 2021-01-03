@@ -25,9 +25,9 @@
 
 </div>
 
-<div style="width: 500px;">
-  <nz-list nzBordered [nzHeader]="text.layout?.shortcutKey">
-    <nz-list-item *ngFor="let item of text.layout?.shortcutKeyList">
+<div style="width: 500px;background: #fff;float: left; padding: 30px 20px;" *ngFor="let list of text.layout?.shortcutKeyList">
+  <nz-list nzBordered [nzHeader]="list.title">
+    <nz-list-item *ngFor="let item of list.items">
       <span nz-typography><mark>{{ item.key }}</mark></span>
       {{ item.describe }}
     </nz-list-item>

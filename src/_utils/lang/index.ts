@@ -1,10 +1,10 @@
 import { getLocalLang } from '@utils/storage';
 
 export let LOCAL_LANG: langType = getLocalLang() || 'en-uk';
-const DEFAULT_LANG: langType = 'zh-cn';
+const DEFAULT_LANG: langType = 'en-uk';
 
 
-export type langType = 'zh-cn' | 'zh-hk' | 'en-uk';
+export type langType = 'zh-cn' | 'zh-hk' | 'en-uk' | 'ja-jp';
 
 type lang = {
   [key in langType]: IText;
@@ -14,12 +14,15 @@ export interface IText {
   lang?: {
     CN: string,
     EN: string,
+    JP: string,
   };
   layout?: {
-    shortcutKey: string,
     shortcutKeyList: Array<{
-      key: string,
-      describe: string;
+      title: string,
+      items: Array<{
+        key: string,
+        describe: string;
+      }>
     }>,
     langSelect: string;
     themeSelect: string;
@@ -61,12 +64,17 @@ const data: lang = {
     lang: {
       CN: '中文',
       EN: '英语',
+      JP: '日语',
     },
     layout: {
-      shortcutKey: '快捷键',
       shortcutKeyList: [
-        { key: 'Z + Q', describe: '收缩菜单' },
-        { key: 'Z + 数字键', describe: '按菜单顺序导航' },
+        {
+          title: '快捷键 - 全局',
+          items: [
+            { key: 'Z + Q', describe: '收缩菜单' },
+            { key: 'Z + 数字键', describe: '按菜单顺序导航' },
+          ],
+        },
       ],
       langSelect: '语言',
       themeSelect: '主题',
@@ -101,18 +109,22 @@ const data: lang = {
       setting: '设置',
     }
   },
-  'zh-hk': {
-  },
+  'zh-hk': { },
   'en-uk': {
     lang: {
       CN: 'Chinese',
       EN: 'English',
+      JP: 'Japenese'
     },
     layout: {
-      shortcutKey: 'Shortcut Keys',
       shortcutKeyList: [
-        { key: 'Z + Q', describe: 'Stretch or shrink the menu.' },
-        { key: 'Z + number', describe: 'Navigate by menu order.' },
+        {
+          title: 'Shortcut Keys - global',
+          items: [
+            { key: 'Z + Q', describe: 'Stretch or shrink the menu.' },
+            { key: 'Z + number', describe: 'Navigate by menu order.' },
+          ],
+        },
       ],
       langSelect: 'language',
       themeSelect: 'theme',
@@ -147,6 +159,18 @@ const data: lang = {
       setting: 'Setting',
     },
   },
+  'ja-jp': {
+    menu: {
+      dashboard: 'コンソール',
+      welcome: 'ウェルカムページ',
+      monitor: '監視ページ',
+      component: 'デモページ',
+      users: 'ユーザー管理',
+      table: '表で示す',
+      form: 'マトリクス表示',
+      setting: '設置',
+    }
+  }
 };
 
 const proxyData = data;

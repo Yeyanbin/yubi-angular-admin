@@ -20,6 +20,7 @@ export class WelcomeComponent implements OnInit {
     // tslint:disable: no-non-null-assertion
     { value: 'zh-cn', label: text.lang!.CN },
     { value: 'en-uk', label: text.lang!.EN },
+    { value: 'ja-jp', label: text.lang!.JP },
   ];
 
   themes: { value: NzMenuThemeType, label: string }[] = [
