@@ -22,11 +22,12 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { WelcomeModule } from './welcome/welcome.module';
 import { SidebarComponent } from './_component/sidebar/sidebar.component';
 import { YubiFormModule } from '../_module/yubi-form/yubi-form.module';
+import { HeaderComponent } from './_component/header/header.component';
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [PagesComponent, SidebarComponent],
+  declarations: [PagesComponent, SidebarComponent, HeaderComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

@@ -10,54 +10,7 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="layoutModule.isCollapsed = !layoutModule.isCollapsed">
-            <i class="trigger"
-               nz-icon
-               [nzType]="layoutModule.isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></i>
-        </span>
-        <div class="app-header-user">
-          <span style="font-size: 16px;margin-right: 10px;">{{ userModule.userID }}</span>
-          <button nz-button nz-dropdown 
-            [nzDropdownMenu]="menu2" 
-            nzShape="circle"
-            nzPlacement="bottomRight">
-            <i nz-icon nzType="user" style="font-size: 20px;"></i>
-          </button>
-          <nz-dropdown-menu #menu2="nzDropdownMenu">
-            <ul nz-menu>
-              <li nz-menu-item (click)="userModule.action.logout()"> 
-                <span>
-                  {{ text.user?.logout }}
-                </span>
-              </li> 
-              <li nz-menu-group nzTitle="about" style="margin: 6px 5px 0 5px;border-top: 0.5px solid rgb(212, 212, 212);">
-                <ul>
-                  <li nz-menu-item >
-                    <a href="https://gitee.com/Yubi233/yubi-angular-admin" target="_blank">
-                      <img style="width: 14px;margin-right: 6px;" src="https://gitee.com/static/images/logo-en.svg" srcset="">
-                      gitee
-                    </a>
-                  </li>                
-                  <li nz-menu-item >
-                    <a href="https://gitee.com/Yubi233/yubi-angular-admin" target="_blank">
-                      <i nz-icon nzType="github" nzTheme="outline"></i>
-                      github
-                    </a>
-                  </li>
-                  <li nz-menu-item >
-                    <a href="https://gitee.com/Yubi233/yubi-angular-admin#-yubi-angular-admin-" target="_blank">
-                      <i nz-icon nzType="book" nzTheme="outline"></i>
-                      doc
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </nz-dropdown-menu>
-        </div>
-      </div>
+      <app-header></app-header>
     </nz-header>
     <nz-content>
       <div class="inner-content">
