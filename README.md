@@ -25,6 +25,7 @@
     </span>
   </div>
 
+<div align="left">
 
 ---
 
@@ -34,12 +35,50 @@
 
 ### 特征
 - **TypeScript**
-- **合理的目录结构** <a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px" href="./docs/"> 萌新自认为  → 介绍文档 </a>
-- **国际化**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 萌新自创解决多语言方案  → 介绍文档</a>
-- **快捷键操作**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 绑定dom全局实现  → 介绍文档</a>
-- **状态管理工具**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 仿Vuex的状态管理工具  → 介绍文档</a>
-- **路由守卫**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 鉴权  → 介绍</a>
-- **利用请求拦截实现本地数据调试方案**<a style="color: grey; font-size: 14px;margin: 5px 0 0 -3px"  href="./docs/"> 就是Mock  → 介绍文档</a>
-- **配置化封装antd表单**     <img style="margin-bottom: -3px" src="https://img.shields.io/badge/目前进度-等待重构-orange.svg"/>
+- **合理的目录结构** [->](#目录结构)
+- **国际化**
+- **快捷键操作**
+- **状态管理工具**
+- **路由守卫**
+- **利用请求拦截实现本地数据调试方案**
+- **配置化处理**     <img src="https://img.shields.io/badge/目前进度-等待重构-orange.svg"/>
 
+
+---
+## 规范推荐
+
+- `x.component.ts`文件中：
+  1. 只处理模块或组件所私有的方法
+  2. 只拥有模块或组件所私有的属性
+  3. 将可做配置化处理的代码抽离到所在模块的`x.config.ts`文件中
+  4. 尽量少在该文件中使用常量
+  5. 请求数据不保存在此文件，且请求行为通过store文件封装处理。
+- 
+
+## 目录结构
+标亮的是路经别名，为了引入方便。
+
+例如 `import { layoutModule } from '@store/layout';`
+
+- src
+  - *_globalStyles* `公共样式`
+  - *_interface* `公共接口` ==@interface==
+  - *_utils* `工具库`   ==@utils==
+    - _lang `多语言` 
+    - storage.ts `localstorage封装`
+  - **app** `根`
+    - *_api* `Ng service` ==@api==
+    - *_gurad* `路由守卫` 
+    - *_module* `公共模块 module` ==@module==
+    - *_store* `状态管理工具` ==@store==
+    - **others** `其他页面`
+    - **pages** `主页面`
+      - *_component* `pages模块的私有组件`
+      - page.menu.ts `菜单文件`
+      - page-routing.module.ts `主页面路由`
+    - app-routing.module.ts `根路由`
+  - assets `静态文件`
+  - environments `环境变量`
+
+> 解决跨域问题 *proxy.conf.json* 代理文件
 
