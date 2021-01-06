@@ -1,7 +1,9 @@
 import { Router } from '@angular/router';
 import { UserService } from '@api/user';
 
-// imports
+/**
+ * This is ng service or Ng router
+ */
 const imports: {
   userService?: UserService;
   router?: Router;
@@ -20,12 +22,12 @@ export class Module<T> {
     this.state = state;
     this.actionFunc = action;
   }
-
+  /**
+   * @return The function of Action from the Store Module
+   */
   public get action(): IAction {
     return this.actionFunc;
   }
-
-
 }
 
 export const useUserService = (service: UserService) => {
@@ -36,6 +38,9 @@ export const useRouter = (r: Router) => {
   imports.router = r;
 };
 
+/**
+ * @return imports
+ */
 export const use = () => {
   return imports;
 };

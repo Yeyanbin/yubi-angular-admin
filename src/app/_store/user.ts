@@ -17,9 +17,12 @@ const userState: IUserState = {
 };
 
 const userAction: IAction = {
-  setUserID: (userID: string): void => {
-    userState.userID = userID;
-  },
+  /**
+   * Login func.
+   * @param userID userID
+   * @param passID PassID
+   * @param remember If save userID and tokenID into localstorage.
+   */
   login: (userID: string, passID: string, remember: boolean = false): boolean => {
     let success = false;
 
@@ -27,7 +30,7 @@ const userAction: IAction = {
       (res: any) => {
         // tslint:disable-next-line: no-conditional-assignment
         if ( success = res.success ) {
-          userAction.setUserID(userID);
+          userState.userID = userID;
           userState.token = res.token;
           userState.tokenID = res.tokenID;
 
@@ -42,6 +45,9 @@ const userAction: IAction = {
     );
     return success;
   },
+  /**
+   * logout
+   */
   logout: () => {
     removeUserID();
     removeUserTokenID();
@@ -49,6 +55,9 @@ const userAction: IAction = {
     userState.tokenID = 0;
     tool.router?.navigateByUrl('/login');
   },
+  /**
+   * init
+   */
   init: () => {
     userState.userID = getUserID() || '';
     userState.tokenID = getUserTokenID() || 0;

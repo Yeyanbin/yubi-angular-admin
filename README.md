@@ -41,7 +41,9 @@
 - **状态管理工具**
 - **路由守卫**
 - **利用请求拦截实现本地数据调试方案**
-- **配置化处理**     <img src="https://img.shields.io/badge/目前进度-等待重构-orange.svg"/>
+- **配置化处理**     
+
+<img src="https://img.shields.io/badge/目前进度-文档编写ing-orange.svg"/>
 
 
 ---
@@ -81,4 +83,10 @@
   - environments `环境变量`
 
 > 解决跨域问题 *proxy.conf.json* 代理文件
+
+---
+
+## 状态管理工具
+
+模仿vuex的一个状态管理工具
 
