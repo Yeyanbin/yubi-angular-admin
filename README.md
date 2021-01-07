@@ -70,10 +70,10 @@
 标亮的是路经别名，为了引入方便。
 
 例如 `import { layoutModule } from '@store/layout';`
-
+==test==
 - src
   - *_globalStyles* `公共样式`
-  - *_interface* `公共接口` ==@interface==
+  - *_interface* `公共接口`==@interface==
   - *_utils* `工具库`   ==@utils==
     - _lang `多语言文本库` 
     - storage.ts `localstorage封装`
