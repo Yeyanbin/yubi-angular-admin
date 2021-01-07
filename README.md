@@ -2,12 +2,12 @@
 
   <h1 align="center"> Yubi-angular-admin </h1>
   <h6  align="center"> 这是Angular11的通用后台模版解决方案，开箱即用，结构清晰。
-    <code align="center">//后两个仅仅针对本作者而言<code> 
+    <code align="center">//后两个仅仅针对本作者而言</code> 
   </h6>
 
-  <h6 align="center">
+  <ul align="center">
   由小萌新Yubi开发和维护。 <code>//即，不断写BUG和制造更多的BUG</code>
-  </h6>
+  </ul>
 
 
   <div align="center">
@@ -21,11 +21,13 @@
       <img src="https://img.shields.io/badge/tslint-6.1.0-green.svg">
     </span>
     <span>
+      <img src="https://img.shields.io/badge/rxjs-6.6.0-green.svg">
+    </span>
+    <span>
       <img src="https://img.shields.io/badge/ng zorro antd-10.2.1-green.svg">
     </span>
   </div>
 
-<div align="left">
 
 ---
 
@@ -52,17 +54,18 @@
 - `x.component.ts`文件
   1. 只处理模块或组件所私有的方法
   2. 只拥有模块或组件所私有的属性
-  3. 将可做配置化处理的代码抽离到所在模块的`x.config.ts`文件中
+  3. 将可做配置化处理的代码抽离到所在模块的`x.config.ts`文件中 `// 例如 pages.config.ts`
   4. 尽量少在该文件中使用常量
-  5. 请求数据不保存在此文件，且请求行为通过store文件封装处理。
+  5. 请求数据不保存在此文件，且请求行为通过store中对应的module封装处理。
 - 文件目录 
   1. 常用文件夹需要加上别名，减少相对路径的使用 `import { layoutModule } from '@store/layout';`
   2. 非页面的文件命名，前缀带 `_`
   3. 其他页面存放404，login等工具页，每个非`_`前缀的文件夹是且仅是一个页面模块 `pages/pageName`
 - 其他规范
-  1. 文本常量尽量用多语言工具进行调用：`'login'` → `text.user?.login`
+  1. 文本常量尽量用多语言文本库进行调用：`'login'` → `text.user?.login`
   2. 模块的私有组件放在 `./_component/componentName`
   3. 页面模块懒加载
+  4. 初始化操作应该在store中对应的module进行new操作时。`// 参考@store/layout.ts的全局快捷键初始化`
 
 ---
 
@@ -75,7 +78,7 @@
   - *_globalStyles* `公共样式`
   - *_interface* `公共接口` <mark>@interface</mark>
   - *_utils* `工具库`   <mark>@utils
-    - _lang `多语言文本库` 
+    - *_lang* `多语言文本库` 
     - storage.ts `localstorage封装`
   - **app** `根`
     - *_api* `Ng service` <mark>@api
@@ -94,4 +97,3 @@
 > 解决跨域问题 *proxy.conf.json* 代理文件
 
 ---
-
