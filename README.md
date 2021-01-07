@@ -70,18 +70,18 @@
 标亮的是路经别名，为了引入方便。
 
 例如 `import { layoutModule } from '@store/layout';`
-==test==
+
 - src
   - *_globalStyles* `公共样式`
-  - *_interface* `公共接口`==@interface==
-  - *_utils* `工具库`   ==@utils==
+  - *_interface* `公共接口` <mark>@interface</mark>
+  - *_utils* `工具库`   <mark>@utils
     - _lang `多语言文本库` 
     - storage.ts `localstorage封装`
   - **app** `根`
-    - *_api* `Ng service` ==@api==
+    - *_api* `Ng service` <mark>@api
     - *_gurad* `路由守卫` 
-    - *_module* `公共模块 module` ==@module==
-    - *_store* `状态管理工具` ==@store==
+    - *_module* `公共模块 module` <mark>@module
+    - *_store* `状态管理工具` <mark>@store
     - **others** `其他页面`
     - **pages** `主页面`
       - *_component* `pages模块的私有组件`
