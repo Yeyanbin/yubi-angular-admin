@@ -12,7 +12,7 @@ interface IUserState {
 const userState: IUserState = {
   userID: 'test',
   userPwd: '',
-  token: 'g',
+  token: '',
   tokenID: 0
 };
 
@@ -55,19 +55,14 @@ const userAction: IAction = {
     userState.tokenID = 0;
     tool.router?.navigateByUrl('/login');
   },
-  /**
-   * init
-   */
-  init: () => {
-    userState.userID = getUserID() || '';
-    userState.tokenID = getUserTokenID() || 0;
-  }
 };
 
 class UserModule extends Module<IUserState> {
 
   constructor() {
     super(userState, userAction);
+    userState.userID = getUserID() || '';
+    userState.tokenID = getUserTokenID() || 0;
   }
   public get userID(): string {
     return this.state.userID;

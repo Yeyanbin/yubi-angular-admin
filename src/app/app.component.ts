@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { userModule } from '@store/user';
-import { useUserService, useRouter } from '@store/base';
-import { UserService } from '@api/user';
-import { Router } from '@angular/router';
+import { UseNgModule } from '@store/base';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +8,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  constructor(userService: UserService, router: Router) {
-    // This is necessary for use store
-    useUserService(userService);
-    useRouter(router);
+  /**
+   * This is necessary for store to use NgModule.
+   * @param _ Just init store
+   */
+  constructor(_: UseNgModule) {
   }
 
   ngOnInit(): void {
-    userModule.action.init();
   }
 }

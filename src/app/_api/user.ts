@@ -9,7 +9,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-  private URL_LOGIN = 'api/login'; 
+  private URL_LOGIN = 'api/login';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

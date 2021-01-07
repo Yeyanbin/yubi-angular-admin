@@ -11,7 +11,7 @@ import { loginFormConfig } from './login.config';
 
 export class LoginComponent implements OnInit {
   loginFormConfig: IFormConfig | undefined;
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.loginFormConfig = loginFormConfig;
@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     console.log('click');
-
   }
 
 }

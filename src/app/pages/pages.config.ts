@@ -4,8 +4,10 @@ interface IMenu {
   items: Array<any>;
 }
 
+/**
+ * This is the options of Menu. Use In the sidebar component.
+ */
 export const menu: IMenu = {
-
   items: [
     {
       type: 'submenu',
