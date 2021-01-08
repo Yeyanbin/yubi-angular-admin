@@ -43,6 +43,7 @@ export interface IText {
     register: string,
     login: string,
     logout: string,
+    demoUser: string,
   };
   form?: {
     year: string,
