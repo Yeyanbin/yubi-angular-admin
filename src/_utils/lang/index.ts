@@ -68,9 +68,11 @@ const data: lang = {
   'ja-jp': JP,
 };
 
-const proxyData = data;
-
-export let text: IText = new Proxy(proxyData, {
+/**
+ * 建议使用如下方式：
+ *  text.user?.login
+ */
+export let text: IText = new Proxy(data, {
   get(target: lang, propKey: string): IText {
     if (propKey in target[LOCAL_LANG]) {
       return target[LOCAL_LANG][propKey];
@@ -80,3 +82,4 @@ export let text: IText = new Proxy(proxyData, {
     }
   }
 });
+

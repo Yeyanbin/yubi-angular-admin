@@ -12,7 +12,7 @@ const imports: {
 } = {};
 
 /**
- * 
+ * function
  */
 export interface IAction {
   [key: string]: (...arg: any[]) => any;
