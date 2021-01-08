@@ -1,4 +1,4 @@
-
+[English](./README.md)
 
   <h1 align="center"> Yubi-angular-admin </h1>
   <h6  align="center"> 这是Angular11的通用后台模版解决方案，开箱即用，结构清晰。
