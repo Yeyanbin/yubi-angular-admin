@@ -48,9 +48,9 @@ class LayoutModule extends Module<ILayoutState> {
         keyDown[e.key] = true;
         console.log(this.state.keyDown);
 
-        // ctrl+
+        // z + Key
         if ( keyDown.z ) {
-          // 绑定快捷键
+          // use key shortcuts
           keyDown.q && (this.isCollapsed = !this.isCollapsed);
           keyDown[1] && tool.router?.navigateByUrl('/pages');
           keyDown[2] && tool.router?.navigateByUrl('/pages/monitor');
@@ -59,11 +59,11 @@ class LayoutModule extends Module<ILayoutState> {
           keyDown[5] && tool.router?.navigateByUrl('/pages/form');
           keyDown[6] && tool.router?.navigateByUrl('/pages/setting');
 
-          // 保留原生快捷键
+          // native key shortcuts
           !( keyDown.Control ) && e.preventDefault();
         }
       }else {
-        // 重复触发阻止
+        // Preventing repeated triggers
         keyDown.z && e.preventDefault();
       }
     };

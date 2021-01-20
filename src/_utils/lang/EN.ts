@@ -33,6 +33,7 @@ export const EN: IText = {
     register: 'register now!',
     login: 'log in',
     logout: 'log out',
+    demoUser: 'Input any value of userID & passID.',
   },
   form: {
     year: 'year',

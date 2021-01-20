@@ -33,6 +33,7 @@ export const CN: IText = {
     register: '注册',
     login: '登录',
     logout: '登出',
+    demoUser: '输入任何账号密码即可。',
   },
   form: {
     year: '年',

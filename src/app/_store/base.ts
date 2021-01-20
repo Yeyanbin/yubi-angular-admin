@@ -11,6 +11,9 @@ const imports: {
   router?: Router;
 } = {};
 
+/**
+ * function
+ */
 export interface IAction {
   [key: string]: (...arg: any[]) => any;
 }

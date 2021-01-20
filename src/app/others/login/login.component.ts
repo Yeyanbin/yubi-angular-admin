@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '@api/user';
-import { IFormConfig } from '@interface/config';
 import { loginFormConfig } from './login.config';
+import { text } from '@utils/lang';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +9,11 @@ import { loginFormConfig } from './login.config';
 })
 
 export class LoginComponent implements OnInit {
-  loginFormConfig: IFormConfig | undefined;
+  loginFormConfig = loginFormConfig;
+  text = text;
+
   constructor() { }
 
   ngOnInit(): void {
-    this.loginFormConfig = loginFormConfig;
   }
-
-  login(): void {
-    console.log('click');
-  }
-
 }
