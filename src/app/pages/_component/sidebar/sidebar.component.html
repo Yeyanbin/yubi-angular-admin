@@ -1,11 +1,11 @@
 
   <div class="sidebar-logo" 
-    [ngClass]="{'dark': layoutModule.siderTheme === 'dark', 'light': layoutModule.siderTheme === 'light'}">
+    [ngClass]="{'dark': layoutModule.state.siderTheme === 'dark', 'light': layoutModule.state.siderTheme === 'light'}">
     <a href="https://gitee.com/Yubi233/yubi-angular-template" target="_blank">
       <h1>Yubi admin template of NG</h1>
     </a>
   </div>
-  <ul nz-menu [nzTheme]="layoutModule.siderTheme" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+  <ul nz-menu [nzTheme]="layoutModule.state.siderTheme" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
     <ng-container *ngFor="let item of menu.items">
       <li *ngIf="item.type == 'submenu'; else menuItem" 
           nz-submenu nzOpen 

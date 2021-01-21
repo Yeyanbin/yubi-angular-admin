@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { layoutModule } from '@store/layout';
+import { LayoutModule } from '@store/layout';
 
 @Component({
   selector: 'app-pages',
@@ -9,9 +9,7 @@ import { layoutModule } from '@store/layout';
 
 export class PagesComponent implements OnInit {
 
-  layoutModule = layoutModule;
-
-  constructor() {
+  constructor(public layoutModule: LayoutModule) {
   }
 
   ngOnInit(): void {

@@ -1,42 +1,30 @@
 import { langType } from '@utils/lang';
 import { getLocalTheme, setLocalLang, setLocalTheme } from '@utils/storage';
-import { IAction, Module, use } from './base';
+import { Action, ILayoutState } from './base';
 import { getLocalLang } from '@utils/storage';
 import { NzMenuThemeType } from 'ng-zorro-antd/menu';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
-const tool = use();
 
-interface IKeyDown {
-  [arg: string]: boolean;
-}
 
-interface ILayoutState {
-  isCollapsed: boolean;
-  lang: langType;
-  siderTheme: NzMenuThemeType;
-  keyDown: IKeyDown;
-  keyDownFunc: { [func: string]: () => void};
-}
+@Injectable({
+  providedIn: 'root'
+})
+export class LayoutModule {
 
-const layoutState: ILayoutState = {
-  isCollapsed: false,
-  lang: getLocalLang() || 'en-uk',
-  siderTheme: getLocalTheme() || 'light',
-
-  keyDown: {},
-  keyDownFunc: {},
-};
-
-const layoutAction: IAction = {
-
-};
-
-class LayoutModule extends Module<ILayoutState> {
-
-  constructor() {
-    super(layoutState, layoutAction);
+  constructor(private router: Router) {
     this.init();
   }
+
+  state: ILayoutState = {
+    isCollapsed: false,
+    lang: getLocalLang() || 'en-uk',
+    siderTheme: getLocalTheme() || 'light',
+    keyDown: {},
+    keyDownFunc: {},
+  };
+
 
   private init(): void {
 
@@ -52,12 +40,12 @@ class LayoutModule extends Module<ILayoutState> {
         if ( keyDown.z ) {
           // use key shortcuts
           keyDown.q && (this.isCollapsed = !this.isCollapsed);
-          keyDown[1] && tool.router?.navigateByUrl('/pages');
-          keyDown[2] && tool.router?.navigateByUrl('/pages/monitor');
-          keyDown[3] && tool.router?.navigateByUrl('/pages/users');
-          keyDown[4] && tool.router?.navigateByUrl('/pages/table');
-          keyDown[5] && tool.router?.navigateByUrl('/pages/form');
-          keyDown[6] && tool.router?.navigateByUrl('/pages/setting');
+          keyDown[1] && this.router?.navigateByUrl('/pages');
+          keyDown[2] && this.router?.navigateByUrl('/pages/monitor');
+          keyDown[3] && this.router?.navigateByUrl('/pages/users');
+          keyDown[4] && this.router?.navigateByUrl('/pages/table');
+          keyDown[5] && this.router?.navigateByUrl('/pages/form');
+          keyDown[6] && this.router?.navigateByUrl('/pages/setting');
 
           // native key shortcuts
           !( keyDown.Control ) && e.preventDefault();
@@ -73,15 +61,15 @@ class LayoutModule extends Module<ILayoutState> {
     };
   }
 
+
+
   public get isCollapsed(): boolean {
     return this.state.isCollapsed;
   }
 
-
   public set isCollapsed(v: boolean) {
     this.state.isCollapsed = v;
   }
-
 
   public get siderTheme(): NzMenuThemeType {
     return this.state.siderTheme;
@@ -91,6 +79,7 @@ class LayoutModule extends Module<ILayoutState> {
     this.state.siderTheme = v;
     setLocalTheme(v);
   }
+
 
   public get lang(): langType {
     return this.state.lang;
@@ -108,5 +97,3 @@ class LayoutModule extends Module<ILayoutState> {
     return this.state.keyDownFunc;
   }
 }
-
-export const layoutModule = new LayoutModule();

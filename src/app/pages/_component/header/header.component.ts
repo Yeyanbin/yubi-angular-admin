@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { userModule } from '@store/user';
-import { layoutModule } from '@store/layout';
+import { UserModule } from '@store/user';
+import { LayoutModule } from '@store/layout';
 import { text } from '@utils/lang';
 
 @Component({
@@ -11,11 +11,11 @@ import { text } from '@utils/lang';
 })
 export class HeaderComponent implements OnInit {
 
-  userModule = userModule;
-  layoutModule = layoutModule;
   text = text;
 
-  constructor() { }
+  constructor(
+    public userModule: UserModule,
+    public layoutModule: LayoutModule) { }
 
   ngOnInit(): void {
   }

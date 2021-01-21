@@ -1,25 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { userModule } from '@store/user';
-import { layoutModule } from '@store/layout';
+import { LayoutModule } from '@store/layout';
+import { UserModule } from '@store/user';
+// import { userModule } from '@store/user';
+// import { layoutModule } from '@store/layout';
 import { text } from '@utils/lang';
-import { langs, themes } from './welcome.config';
+import { WelcomeConfig } from './welcome.config';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss']
+  styleUrls: ['./welcome.component.scss'],
+  providers: [WelcomeConfig]
 })
 
 export class WelcomeComponent implements OnInit {
 
   text = text;
-  userModule = userModule;
-  layoutModule = layoutModule;
 
-  langs = langs;
-  themes = themes;
+  langs = this.welcomeConfig.langs;
+  themes = this.welcomeConfig.themes;
 
-  constructor() { }
+  constructor(
+    public userModule: UserModule,
+    public layoutModule: LayoutModule,
+    public welcomeConfig: WelcomeConfig) {
+  }
 
   ngOnInit(): void {
   }

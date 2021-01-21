@@ -1,15 +1,5 @@
-import { Router } from '@angular/router';
-import { UserService } from '@api/user';
-import { Injectable } from '@angular/core';
-
-
-/**
- * This is ng service or Ng router
- */
-const imports: {
-  userService?: UserService;
-  router?: Router;
-} = {};
+import { langType } from '@utils/lang';
+import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 
 /**
  * function
@@ -21,40 +11,51 @@ export interface IAction {
 /**
  * father
  */
-export class Module<T> {
-
-  protected state: T;
-  private actionFunc: IAction;
-
-  constructor(state: T, action: IAction) {
-    this.state = state;
-    this.actionFunc = action;
-  }
-  /**
-   * @return The function of Action from the Store Module
-   */
-  public get action(): IAction {
-    return this.actionFunc;
-  }
+export interface Module<T> {
+  state: T;
+  action: IAction;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
-/**
- * This class is used for importing NgModule.
- */
-export class UseNgModule {
-  constructor(userService: UserService, router: Router) {
-    imports.userService = userService;
-    imports.router = router;
-    console.log('inject imports!');
-  }
+export interface IUserState {
+  userID: string;
+  userPwd: string;
+  token: string;
+  tokenID: number;
+}
+
+export interface ILayoutState {
+  isCollapsed: boolean;
+  lang: langType;
+  siderTheme: NzMenuThemeType;
+  keyDown: { [arg: string]: boolean };
+  keyDownFunc: { [func: string]: () => void};
+}
+
+export interface ITableState {
+  [key: string]: Array<any>;
+}
+
+interface IActionOption {
+  log?: string;
 }
 
 /**
- * @return imports
+ * Action descriptor. It's readonly.
+ * @param option
+ *  log：Output log text when this action done.
  */
-export const use = () => {
-  return imports;
+export const Action = ({ log }: IActionOption = {}) =>
+  (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+
+  descriptor.writable = false;
+
+  const action = descriptor.value;
+
+  descriptor.value = function(): any {
+    console.log('Action ' + propertyKey + ', log msg: ' + log + ', time: ' + Date.now());
+    action.apply(this, arguments);
+    return descriptor;
+  };
+
+  return descriptor;
 };

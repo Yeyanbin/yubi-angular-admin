@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { tableModule } from '@store/table';
+import { TableModule } from '@store/table';
 
 @Component({
   selector: 'app-table',
@@ -8,8 +8,7 @@ import { tableModule } from '@store/table';
 })
 export class TableComponent implements OnInit {
 
-  tableModule = tableModule;
-  constructor() { }
+  constructor(public tableModule: TableModule) { }
 
   ngOnInit(): void {
   }

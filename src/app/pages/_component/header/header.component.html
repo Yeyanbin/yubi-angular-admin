@@ -2,11 +2,11 @@
   <span class="header-trigger" (click)="layoutModule.isCollapsed = !layoutModule.isCollapsed">
       <i class="trigger"
          nz-icon
-         [nzType]="layoutModule.isCollapsed ? 'menu-unfold' : 'menu-fold'"
+         [nzType]="layoutModule.state.isCollapsed ? 'menu-unfold' : 'menu-fold'"
       ></i>
   </span>
   <div class="app-header-user">
-    <span style="font-size: 16px;margin-right: 10px;">{{ userModule.userID }}</span>
+    <span style="font-size: 16px;margin-right: 10px;">{{ userModule.state.userID }}</span>
     <button nz-button nz-dropdown 
       [nzDropdownMenu]="menu2" 
       nzShape="circle"
@@ -15,7 +15,7 @@
     </button>
     <nz-dropdown-menu #menu2="nzDropdownMenu">
       <ul nz-menu>
-        <li nz-menu-item (click)="userModule.action.logout()"> 
+        <li nz-menu-item (click)="userModule.logout()"> 
           <span>
             {{ text.user?.logout }}
           </span>

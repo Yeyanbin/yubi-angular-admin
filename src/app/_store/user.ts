@@ -1,84 +1,68 @@
-import { IAction, Module, use } from './base';
+import { Action, IUserState } from './base';
 import { getUserID, getUserTokenID, removeUserID, removeUserTokenID, setUserID, setUserTokenID } from '@utils/storage';
+import { Injectable } from '@angular/core';
+import { UserService } from '@api/user';
+import { Router } from '@angular/router';
 
-const tool = use();
-interface IUserState {
-  userID: string;
-  userPwd: string;
-  token: string;
-  tokenID: number;
-}
 
-const userState: IUserState = {
-  userID: 'test',
-  userPwd: '',
-  token: '',
-  tokenID: 0
-};
+@Injectable({
+  providedIn: 'root'
+})
+/**
+ * A service of UserModule that inject 'root'
+ */
+export class UserModule {
 
-const userAction: IAction = {
+  constructor(
+    private userService: UserService,
+    private router: Router) {
+  }
+
+  public state: IUserState = {
+    userID: getUserID() || '',
+    userPwd: '',
+    token: '',
+    tokenID: getUserTokenID() || 0,
+  };
+
   /**
    * Login func.
    * @param userID userID
    * @param passID PassID
    * @param remember If save userID and tokenID into localstorage.
    */
-  login: (userID: string, passID: string, remember: boolean = false): boolean => {
+  @Action({log: 'Login Action'})
+  login(userID: string, passID: string, remember: boolean = false): boolean {
     let success = false;
-
-    tool.userService?.login(userID, passID).subscribe(
+    this.userService.login(userID, passID).subscribe(
       (res: any) => {
         // tslint:disable-next-line: no-conditional-assignment
-        if ( success = res.success ) {
-          userState.userID = userID;
-          userState.token = res.token;
-          userState.tokenID = res.tokenID;
-
+        if (success = res.success) {
+          this.state.userID = userID;
+          this.state.token = res.token;
+          this.state.tokenID = res.tokenID;
+          console.log(this.state);
           if (remember) {
             setUserID(userID);
             setUserTokenID(res.tokenID);
           }
 
-          tool.router?.navigateByUrl('/');
+          this.router.navigateByUrl('/');
         }
       }
     );
     return success;
-  },
+  }
   /**
    * logout
    */
-  logout: () => {
+  @Action({log: 'Logout Action'})
+  logout(): void {
+    // this.login = (...[]): boolean => true;
     removeUserID();
     removeUserTokenID();
-    userState.userID = '';
-    userState.tokenID = 0;
-    tool.router?.navigateByUrl('/login');
-  },
-};
-
-class UserModule extends Module<IUserState> {
-
-  constructor() {
-    super(userState, userAction);
-    userState.userID = getUserID() || '';
-    userState.tokenID = getUserTokenID() || 0;
-  }
-  public get userID(): string {
-    return this.state.userID;
-  }
-
-  public get userPwd(): string {
-    return this.state.userPwd;
-  }
-
-  public get tokenID(): number {
-    return this.state.tokenID;
-  }
-
-  public get token(): string {
-    return this.state.token;
+    this.state.userID = '';
+    this.state.tokenID = 0;
+    this.router.navigateByUrl('/login');
   }
 }
-
-export const userModule = new UserModule();

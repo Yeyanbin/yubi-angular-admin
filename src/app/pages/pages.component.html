@@ -3,10 +3,10 @@
           nzCollapsible
           nzWidth="256px"
           nzBreakpoint="md"
-          [(nzCollapsed)]="layoutModule.isCollapsed"
+          [(nzCollapsed)]="layoutModule.state.isCollapsed"
           [nzTrigger]="null"
-          [nzTheme]="layoutModule.siderTheme">
-    <app-sidebar [isCollapsed]="layoutModule.isCollapsed"></app-sidebar>
+          [nzTheme]="layoutModule.state.siderTheme">
+    <app-sidebar [isCollapsed]="layoutModule.state.isCollapsed"></app-sidebar>
   </nz-sider>
   <nz-layout>
     <nz-header>

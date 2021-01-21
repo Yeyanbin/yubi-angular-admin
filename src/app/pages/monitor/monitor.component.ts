@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { userModule } from '@store/user';
+import { UserModule } from '@store/user';
 
 @Component({
   selector: 'app-monitor',
@@ -8,11 +8,9 @@ import { userModule } from '@store/user';
 })
 export class MonitorComponent implements OnInit {
 
-  userModule: any;
-  constructor() { }
+  constructor(public userModule: UserModule) { }
 
   ngOnInit(): void {
-    this.userModule = userModule;
   }
 
 }

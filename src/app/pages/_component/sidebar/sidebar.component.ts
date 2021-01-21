@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { menu } from '../../pages.config';
-import { layoutModule } from '@store/layout';
+import { LayoutModule } from '@store/layout';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,12 +11,14 @@ export class SidebarComponent implements OnInit {
 
 
   menu = menu;
-  layoutModule = layoutModule;
 
   @Input()
   isCollapsed!: boolean;
 
-  constructor() { }
+  constructor(
+    public layoutModule: LayoutModule) {
+
+  }
 
   ngOnInit(): void {
 
