@@ -13,8 +13,8 @@ export class LoginGuard implements CanActivate{
   canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
 
-    // console.log(router);
-    // console.log(state);
+    console.log(router);
+    console.log(state);
 
     if ( this.userModule.state.userID && this.userModule.state.tokenID ) {
       return true;

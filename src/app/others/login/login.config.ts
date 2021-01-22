@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { IFormConfig } from '@interface/config';
 import { UserModule } from '@store/user';
 import { text } from '@utils/lang';
 
@@ -13,7 +12,7 @@ export class LoginConfig {
 
   }
 
-  loginFormConfig: IFormConfig = {
+  loginFormConfig = {
     class: [ 'login-form' ],
     showFormData: true,
     width: 300,

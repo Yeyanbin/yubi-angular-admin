@@ -31,8 +31,12 @@ export interface ILayoutState {
   keyDownFunc: { [func: string]: () => void};
 }
 
-export interface ITableState {
-  [key: string]: Array<any>;
+export interface IHistoryState {
+  list: {
+    name: string;
+    url: string;
+  }[];
+  onShow: string;
 }
 
 interface IActionOption {
@@ -43,6 +47,7 @@ interface IActionOption {
  * Action descriptor. It's readonly.
  * @param option
  *  log：Output log text when this action done.
+ *  test: A
  */
 export const Action = ({ log }: IActionOption = {}) =>
   (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {

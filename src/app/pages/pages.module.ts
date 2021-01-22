@@ -16,6 +16,7 @@ import en from '@angular/common/locales/en';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 
 
@@ -40,6 +41,7 @@ registerLocaleData(en);
     NzDropDownModule,
     NzButtonModule,
     NzDividerModule,
+    NzTagModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
 

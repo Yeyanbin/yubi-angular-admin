@@ -10,10 +10,10 @@
         class="table-card-content"
         [nzShowPagination]="false"
         [nzScroll]="{ y: '400px' }"
-        [nzData]="tableModule.state.table1Data">
+        [nzData]="table1.items">
         <thead>
           <tr>
-            <th *ngFor="let item of tableModule.state.table1Head">{{ item }}</th>
+            <th *ngFor="let item of table1.heads">{{ item }}</th>
           </tr>
         </thead>
         <tbody>
@@ -38,10 +38,10 @@
         class="table-card-content"
         [nzScroll]="{ y: '400px' }"
         [nzShowPagination]="false"
-        [nzData]="tableModule.state.table2Data">
+        [nzData]="table2.items">
         <thead>
           <tr>
-            <th *ngFor="let item of tableModule.state.table2Head">{{ item }}</th>
+            <th *ngFor="let item of table2.heads">{{ item }}</th>
           </tr>          
         </thead>
         <tbody>

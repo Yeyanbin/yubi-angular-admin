@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, provideRoutes, Router } from '@angular/router';
-import { LoginGuard } from './_guard/Permissions';
+import { LoginGuard } from '@api/guard/Permissions';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'pages' },

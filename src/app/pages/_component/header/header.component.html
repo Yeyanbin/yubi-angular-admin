@@ -1,10 +1,21 @@
 <div class="app-header">
-  <span class="header-trigger" (click)="layoutModule.isCollapsed = !layoutModule.isCollapsed">
+
+
+  <div style="float: left">
+    <span class="header-trigger" (click)="layoutModule.isCollapsed = !layoutModule.isCollapsed">
       <i class="trigger"
          nz-icon
          [nzType]="layoutModule.state.isCollapsed ? 'menu-unfold' : 'menu-fold'"
       ></i>
-  </span>
+    </span>
+    <nz-tag *ngFor="let item of historyModule.state.list" 
+      nzMode="closeable"
+      [nzColor]="historyModule.state.onShow === item.name ?'processing': 'default'"
+      [routerLink]="item.url"
+      (click)="historyModule.state.onShow = item.name"
+      (nzOnClose)="historyModule.removeHistory(item.name)">{{ item.name }}</nz-tag>
+
+  </div>
   <div class="app-header-user">
     <span style="font-size: 16px;margin-right: 10px;">{{ userModule.state.userID }}</span>
     <button nz-button nz-dropdown 
