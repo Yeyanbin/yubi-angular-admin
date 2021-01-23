@@ -1,6 +1,6 @@
 import { text } from '@utils/lang';
 
-interface IMenu {
+export interface IMenu {
   items: Array<any>;
 }
 
@@ -15,15 +15,15 @@ export const menu: IMenu = {
       icon: 'dashboard',
       childs: [
         {
-          path: './welcome',
+          path: '/pages/welcome',
           name: text.menu?.welcome
         },
         {
-          path: './monitor',
+          path: '/pages/monitor',
           name: text.menu?.monitor
         },
         {
-          path: './users',
+          path: '/pages/users',
           name: text.menu?.users
         }
       ]
@@ -34,11 +34,11 @@ export const menu: IMenu = {
       icon: 'appstore',
       childs: [
         {
-          path: './table',
+          path: '/pages/table',
           name: text.menu?.table,
         },
         {
-          path: './form',
+          path: '/pages/form',
           name: text.menu?.form
         }
       ]
@@ -47,7 +47,7 @@ export const menu: IMenu = {
       type: 'item',
       name: text.menu?.setting,
       icon: 'setting',
-      path: './setting'
+      path: '/pages/setting'
     }
   ]
 };

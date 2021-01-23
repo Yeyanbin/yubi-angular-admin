@@ -4,8 +4,11 @@ import { Action, ILayoutState } from './base';
 import { getLocalLang } from '@utils/storage';
 import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import {  Router } from '@angular/router';
+import { HistoryModule } from './history';
+import { menu } from '../pages/pages.config';
 
+// tslint:disable:no-unused-expression
 
 
 @Injectable({
@@ -13,7 +16,9 @@ import { Router } from '@angular/router';
 })
 export class LayoutModule {
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private historyModule: HistoryModule) {
     this.init();
   }
 
@@ -28,8 +33,22 @@ export class LayoutModule {
 
   private init(): void {
 
+    const dfsMenu = (items: any[], container: {path: string; name: string}[]): any =>
+      items.forEach((item) =>
+        item.childs ?
+          dfsMenu(item.childs, container) :
+          container.push({name: item.name, path: item.path}));
+
+
+    const menus: {path: string; name: string}[] = [];
+    dfsMenu(menu.items, menus);
+
+    this.historyModule.state.list.push(
+      {name: this.historyModule.state.onShow = menus[0].name,
+        url: menus[0].path });
+
     document.onkeydown = (e: KeyboardEvent) => {
-      // tslint:disable: no-unused-expression
+
       const keyDown = this.state.keyDown;
 
       if ( !keyDown[e.key] ) {
@@ -40,12 +59,11 @@ export class LayoutModule {
         if ( keyDown.z ) {
           // use key shortcuts
           keyDown.q && (this.isCollapsed = !this.isCollapsed);
-          keyDown[1] && this.router?.navigateByUrl('/pages');
-          keyDown[2] && this.router?.navigateByUrl('/pages/monitor');
-          keyDown[3] && this.router?.navigateByUrl('/pages/users');
-          keyDown[4] && this.router?.navigateByUrl('/pages/table');
-          keyDown[5] && this.router?.navigateByUrl('/pages/form');
-          keyDown[6] && this.router?.navigateByUrl('/pages/setting');
+
+          for (let index = 0 ; menus[index] ; ++index) {
+            keyDown[index + 1] && this.router.navigateByUrl(menus[index].path)
+            && this.historyModule.addHistory(menus[index].name, menus[index].path);
+          }
 
           // native key shortcuts
           !( keyDown.Control ) && e.preventDefault();

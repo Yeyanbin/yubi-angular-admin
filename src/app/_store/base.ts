@@ -57,7 +57,8 @@ export const Action = ({ log }: IActionOption = {}) =>
   const action = descriptor.value;
 
   descriptor.value = function(): any {
-    console.log('Action ' + propertyKey + ', log msg: ' + log + ', time: ' + Date.now());
+    // tslint:disable-next-line:no-unused-expression
+    log && console.log('Action ' + propertyKey + ', log msg: ' + log + ', time: ' + Date.now());
     action.apply(this, arguments);
     return descriptor;
   };

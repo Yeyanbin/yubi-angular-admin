@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, NavigationStart, CanActivateChild, UrlTree } from '@angular/router';
+import { HistoryModule } from '@store/history';
 import { UserModule } from '@store/user';
 // 一定要加这个
 @Injectable({
@@ -7,7 +8,10 @@ import { UserModule } from '@store/user';
 })
 export class LoginGuard implements CanActivate{
 
-  constructor( private router: Router, private userModule: UserModule) { }
+  constructor(
+    private router: Router,
+    private userModule: UserModule,
+    private historyModule: HistoryModule) { }
 
 
   canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {

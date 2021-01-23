@@ -12,8 +12,8 @@ export class HistoryModule {
   constructor(private router: Router) {}
 
   state: IHistoryState = {
-    list: [ { name: 'Welcome', url: './welcome'} ],
-    onShow: 'Welcome'
+    list: [],
+    onShow: ''
   };
 
   /**
@@ -21,7 +21,7 @@ export class HistoryModule {
    * @param name is page name
    * @param url is router url
    */
-  @Action()
+  @Action({ log: 'add history action' })
   public addHistory(name: string, url: string): void {
 
     if ( !this.state.list.find((item) => {
