@@ -12,10 +12,13 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { InputComponent } from './_component/input/input.component';
+import { SelectComponent } from './_component/select/select.component';
+import { DateRangesComponent } from './_component/date-ranges/date-ranges.component';
 
 
 @NgModule({
-  declarations: [YubiFormComponent],
+  declarations: [YubiFormComponent, InputComponent, SelectComponent, DateRangesComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

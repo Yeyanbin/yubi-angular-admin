@@ -1,6 +1,6 @@
 import { langType } from '@utils/lang';
 import { getLocalTheme, setLocalLang, setLocalTheme } from '@utils/storage';
-import { Action, ILayoutState } from './base';
+import { ILayoutState, YubiModule, Module } from './base';
 import { getLocalLang } from '@utils/storage';
 import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 import { Injectable } from '@angular/core';
@@ -14,12 +14,19 @@ import { menu } from '../pages/pages.config';
 @Injectable({
   providedIn: 'root'
 })
-export class LayoutModule {
+@YubiModule({
+  name: 'layout'
+})
+export class LayoutModule extends Module<ILayoutState>{
 
   constructor(
     private router: Router,
     private historyModule: HistoryModule) {
-    this.init();
+      super();
+      this.init();
+      // console.log('layout');
+      // console.log(this instanceof Module);
+      // console.log(this instanceof LayoutModule);
   }
 
   state: ILayoutState = {
@@ -78,8 +85,6 @@ export class LayoutModule {
       e.preventDefault();
     };
   }
-
-
 
   public get isCollapsed(): boolean {
     return this.state.isCollapsed;

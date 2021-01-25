@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Action, IHistoryState } from './base';
+import { Action, IHistoryState, YubiModule } from './base';
 
 // tslint:disable:no-conditional-assignment
 
 @Injectable({
   providedIn: 'root'
+})
+@YubiModule({
+  name: 'history'
 })
 export class HistoryModule {
 

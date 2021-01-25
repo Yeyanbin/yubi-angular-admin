@@ -1,4 +1,4 @@
-import { Action, IUserState } from './base';
+import { Action, IUserState, YubiModule } from './base';
 import { getUserID, getUserTokenID, removeUserID, removeUserTokenID, setUserID, setUserTokenID } from '@utils/storage';
 import { Injectable } from '@angular/core';
 import { UserService } from '@api/user';
@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
+})
+@YubiModule({
+  name: 'user'
 })
 /**
  * A service of UserModule that inject 'root'

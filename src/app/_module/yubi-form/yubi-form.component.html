@@ -16,7 +16,7 @@
             <input nz-input
               [type]="item.inputType" 
               [formControlName]="item.formControlName" 
-              [placeholder]="item.placeholder" />
+              [placeholder]="item.placeholder"/>
           </nz-input-group>
           <label nz-checkbox *ngIf="item.formControlType == 'checkbox'"
             [formControlName]="item.formControlName"
@@ -24,7 +24,7 @@
             <span>{{ item.content }}</span>
           </label>
           <!-- 多选 -->
-          <nz-select *ngIf="item.formControlType == 'select' && item.mode == 'multiple'"
+          <nz-select *ngIf="item.formControlType == 'select' && item.mode === 'multiple'"
             [(ngModel)]="item.multipleList"
             [nzMode]="item.mode"
             [formControlName]="item.formControlName"

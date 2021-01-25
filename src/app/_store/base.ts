@@ -2,18 +2,12 @@ import { langType } from '@utils/lang';
 import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 
 /**
- * function
- */
-export interface IAction {
-  [key: string]: (...arg: any[]) => any;
-}
-
-/**
  * father
  */
-export interface Module<T> {
-  state: T;
-  action: IAction;
+export class Module<T> {
+  public name = 'test';
+
+  state?: T;
 }
 
 export interface IUserState {
@@ -43,6 +37,13 @@ interface IActionOption {
   log?: string;
 }
 
+interface IModuleOption {
+  name: string;
+}
+
+
+
+const logs: string[] = [];
 /**
  * Action descriptor. It's readonly.
  * @param option
@@ -58,10 +59,30 @@ export const Action = ({ log }: IActionOption = {}) =>
 
   descriptor.value = function(): any {
     // tslint:disable-next-line:no-unused-expression
-    log && console.log('Action ' + propertyKey + ', log msg: ' + log + ', time: ' + Date.now());
+    log && logs.push(log);
     action.apply(this, arguments);
     return descriptor;
   };
 
   return descriptor;
+};
+
+
+
+/**
+ * @param name name in modules
+ */
+export const YubiModule = ({ name }: IModuleOption) =>
+  // tslint:disable-next-line:only-arrow-functions
+  (target: any): any => {
+    // console.log(this);
+    console.log(target);
+    // modules[name] = new target();
+    return target;
+  };
+
+
+
+export const getLog = (): string[] => {
+  return logs;
 };

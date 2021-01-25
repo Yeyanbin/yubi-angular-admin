@@ -1,60 +1,63 @@
-import { ValidatorFn } from '@angular/forms';
+import { FormGroup, ValidatorFn } from '@angular/forms';
 
-
-export interface IFormConfig {
+export interface IFormConfig<T> {
   class: string[];
   showFormData: boolean;
   width: number;
   formName: string;
-  formControlItems: Array<IFormControlItem>;
+  formControlItems: Array<formItemType<T>>;
   otherItems: Array<IOtherItem>;
 }
 
 export interface IFormControlItem extends IFunc{
   formControlType: string;
   formControlName: string;
-  span: number;
+  validators: Array<ValidatorFn>;
+
+  span?: number;
   labelSpan?: number;
   label?: string;
   controlSpan?: number;
-  default: null | any;
+  default: any;
   preContent?: string;
   nzTip: ITip;
-  validators: Array<ValidatorFn>;
-  class?: string[];
   content?: string;
+}
 
+export type formItemType<T> = IInput | ISelect<T> | IDateRanges;
+
+export interface ILayout {
+  controlSpan: number;
+  labelSpan: number;
+  offset: number;
+  class?: string[];
   style?: {
     [key: string]: string;
   };
+}
 
-  // input
+export interface IInput extends IFormControlItem {
   inputType?: string;
   inputIcon?: string;
   placeholder?: string;
+  clickFunc: (validateForm: any) => void;
+}
 
-  // checkbox
-
-  // select
-  selectOptions?: {
-    value: string;
+export interface ISelect<T> extends IFormControlItem {
+  selectOptions: {
+    value: T;
     label: string;
   }[];
-  multipleList?: any[];
-  selectMode?: string;
-  mode?: string;
+  mode: selectModeType;
+  multipleList?: T[];
 
-  // date-ranges
-  ranges?: any;
-  format?: any;
+}
 
-  // func
-  clickFunc?: (validateForm: any) => void;
-  selectFunc?: (validateForm: any, $event: any) => void;
-  onChange?: (validateForm: any, $event: any) => void;
+type selectModeType = 'single' | 'multiple';
 
-  // [key: string]: (...arg: any[]) => any;
-
+export interface IDateRanges extends IFormControlItem {
+  ranges: any;
+  format: any;
 }
 
 export interface ITip {
@@ -81,7 +84,9 @@ export interface IOtherItem extends IFunc{
 
 interface IFunc {
   // func
-  clickFunc?: (validateForm: any) => void;
-  selectFunc?: (validateForm: any, $event: any) => void;
+  clickFunc?: (validateForm: FormGroup) => void;
+  selectFunc?: (validateForm: FormGroup, $event: any) => void;
+  onChange?: (validateForm: FormGroup, $event: any) => void;
+
 }
 

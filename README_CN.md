@@ -9,7 +9,6 @@
   由小萌新Yubi开发和维护。 <code>//即，不断写BUG和制造更多的BUG</code>
   </ul>
 
-
   <div align="center">
     <span>
       <img src="https://img.shields.io/badge/@angular/cli-11.0.2-green.svg">
@@ -28,6 +27,13 @@
     </span>
   </div>
 
+---
+
+##### 为什么要开发，以及特点
+我想把一些从Vue的开发中学习到的和Angular学到的解决方案作对比，整合一套个人更熟悉和擅长的技术方案。同时要尽量做到减少对其他库的依赖。
+
+同时，这也是给自己提供了一个合适的造轮子的地方。
+- 例如，多语言文本库，状态管理工具，封装`Ng Form`和`ng zorro form组件`的配置化表单等等。
 
 ---
 
