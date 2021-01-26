@@ -48,5 +48,6 @@ export const CN: IText = {
     table: '表格',
     form: '表单',
     setting: '设置',
+    markdown: 'markdown',
   }
 };

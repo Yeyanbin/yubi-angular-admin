@@ -40,6 +40,10 @@ export const menu: IMenu = {
         {
           path: '/pages/form',
           name: text.menu?.form
+        },
+        {
+          path: '/pages/markdown',
+          name: text.menu?.markdown
         }
       ]
     },

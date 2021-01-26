@@ -37,7 +37,8 @@
             ],
             "styles": [
               "src/_globalStyles/theme.less",
-              "src/_globalStyles/styles.scss"
+              "src/_globalStyles/styles.scss",
+              "node_modules/vditor/dist/index.css"
             ],
             "scripts": []
           },

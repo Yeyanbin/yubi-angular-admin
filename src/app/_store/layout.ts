@@ -1,6 +1,6 @@
 import { langType } from '@utils/lang';
 import { getLocalTheme, setLocalLang, setLocalTheme } from '@utils/storage';
-import { ILayoutState, YubiModule, Module } from './base';
+import { YubiModule, Module } from './base';
 import { getLocalLang } from '@utils/storage';
 import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 import { Injectable } from '@angular/core';
@@ -10,6 +10,18 @@ import { menu } from '../pages/pages.config';
 
 // tslint:disable:no-unused-expression
 
+
+export interface ILayoutState {
+  isCollapsed: boolean;
+  lang: langType;
+  siderTheme: NzMenuThemeType;
+  keyDown: { [arg: string]: boolean };
+  keyDownFunc: { [func: string]: () => void};
+  dfsMenus: {
+    name: string;
+    path: string;
+  }[];
+}
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +47,7 @@ export class LayoutModule extends Module<ILayoutState>{
     siderTheme: getLocalTheme() || 'light',
     keyDown: {},
     keyDownFunc: {},
+    dfsMenus: []
   };
 
 
@@ -47,12 +60,12 @@ export class LayoutModule extends Module<ILayoutState>{
           container.push({name: item.name, path: item.path}));
 
 
-    const menus: {path: string; name: string}[] = [];
+    const menus: {path: string; name: string}[] = this.state.dfsMenus;
     dfsMenu(menu.items, menus);
 
-    this.historyModule.state.list.push(
-      {name: this.historyModule.state.onShow = menus[0].name,
-        url: menus[0].path });
+    // this.historyModule.state.list.push(
+    //   {name: this.historyModule.state.onShow = menus[0].name,
+    //     url: menus[0].path });
 
     document.onkeydown = (e: KeyboardEvent) => {
 

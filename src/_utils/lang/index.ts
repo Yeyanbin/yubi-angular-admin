@@ -58,6 +58,7 @@ export interface IText {
     table: string;
     form: string;
     setting: string;
+    markdown: string;
   };
   [key: string]: any;
 }

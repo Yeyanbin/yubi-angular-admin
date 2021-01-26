@@ -17,13 +17,6 @@ export interface IUserState {
   tokenID: number;
 }
 
-export interface ILayoutState {
-  isCollapsed: boolean;
-  lang: langType;
-  siderTheme: NzMenuThemeType;
-  keyDown: { [arg: string]: boolean };
-  keyDownFunc: { [func: string]: () => void};
-}
 
 export interface IHistoryState {
   list: {
@@ -48,7 +41,6 @@ const logs: string[] = [];
  * Action descriptor. It's readonly.
  * @param option
  *  log：Output log text when this action done.
- *  test: A
  */
 export const Action = ({ log }: IActionOption = {}) =>
   (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {

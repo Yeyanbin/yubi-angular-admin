@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
@@ -22,7 +21,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 
 import { WelcomeModule } from './welcome/welcome.module';
 import { SidebarComponent } from './_component/sidebar/sidebar.component';
-import { YubiFormModule } from '../_module/yubi-form/yubi-form.module';
+// import { YubiFormModule } from '../_module/yubi-form/yubi-form.module';
 import { HeaderComponent } from './_component/header/header.component';
 
 registerLocaleData(en);
@@ -37,7 +36,7 @@ registerLocaleData(en);
     NzMenuModule,
     FormsModule,
     HttpClientModule,
-    YubiFormModule,
+    // YubiFormModule,
     NzDropDownModule,
     NzButtonModule,
     NzDividerModule,

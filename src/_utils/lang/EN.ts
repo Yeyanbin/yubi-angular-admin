@@ -48,5 +48,6 @@ export const EN: IText = {
     table: 'Table',
     form: 'Form',
     setting: 'Setting',
+    markdown: 'markdown',
   },
 };

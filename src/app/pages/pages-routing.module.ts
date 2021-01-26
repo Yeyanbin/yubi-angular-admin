@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: 'form', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
       { path: 'setting', loadChildren: () => import('./setting/setting.module').then(m => m.SettingModule) },
       { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+      { path: 'markdown', loadChildren: () => import('./markdown/markdown.module').then(m => m.MarkdownModule) },
     ]
   },
 ];

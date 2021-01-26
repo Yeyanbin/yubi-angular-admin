@@ -1,3 +1,5 @@
+@import '/src/_globalStyles/variables';
+
 :host {
   display: flex;
   text-rendering: optimizeLegibility;
@@ -18,7 +20,7 @@
 
 
 .header-trigger {
-  height: 64px;
+  height: $layout-header-height;
   padding: 20px 24px;
   font-size: 20px;
   cursor: pointer;
@@ -55,7 +57,7 @@ nz-content {
 }
 
 .inner-content {
-  padding: 18px;
+  padding: $page-container-padding;
   background: #fff;
   height: 100%;
   overflow: auto;

@@ -10,5 +10,6 @@ export const JP: IText = {
     table: '表で示す',
     form: 'マトリクス表示',
     setting: '設置',
+    markdown: 'markdown',
   }
 };
