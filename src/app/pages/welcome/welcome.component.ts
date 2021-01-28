@@ -12,7 +12,6 @@ import { WelcomeConfig } from './welcome.config';
   styleUrls: ['./welcome.component.scss'],
   providers: [WelcomeConfig]
 })
-
 export class WelcomeComponent implements OnInit {
 
   text = text;

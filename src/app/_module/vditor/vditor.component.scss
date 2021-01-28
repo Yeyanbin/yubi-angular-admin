@@ -1,5 +1,5 @@
 @import '/src/_globalStyles/variables';
 
 .vditor {
-  height: calc(100vh - $layout-header-height - $page-container-padding*2);
+  height: calc(100vh - 64px - 2 * 18px);
 }

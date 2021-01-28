@@ -10,12 +10,6 @@ export class Module<T> {
   state?: T;
 }
 
-export interface IUserState {
-  userID: string;
-  userPwd: string;
-  token: string;
-  tokenID: number;
-}
 
 
 export interface IHistoryState {

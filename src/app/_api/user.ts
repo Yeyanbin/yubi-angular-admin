@@ -10,6 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class UserService {
 
   private URL_LOGIN = 'api/login';
+  private URL_WORKS = 'api/works';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -31,6 +32,22 @@ export class UserService {
           console.log(next);
         }),
         catchError(this.handleError('loginError', []))
+      );
+  }
+
+  getWorks(userID: string, tokenID: string): Observable<any>{
+    return this.http.get<{userID: string, tokenID: string}>(
+      this.URL_WORKS, {
+        params: {
+          userID,
+          tokenID,
+        }
+      }).pipe(
+        // RxJS 的 tap() 操作符来实现，该操作符会查看 Observable 中的值，使用那些值做一些事情，并且把它们传出来。 这种 tap() 回调不会改变这些值本身。
+        tap((next) => {
+          console.log('get works');
+          console.log(next);
+        }),
       );
   }
 

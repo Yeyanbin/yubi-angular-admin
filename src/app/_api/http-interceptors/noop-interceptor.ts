@@ -4,7 +4,7 @@ import {
 } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { login } from '../mock/user';
+import { login, works } from '../mock/user';
 
 @Injectable()
 export class NoopInterceptor implements HttpInterceptor {
@@ -14,6 +14,8 @@ export class NoopInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    console.log(req);
+    console.log(next);
     // 通过拦截器拦截 api/login 请求
     if ( req.url === 'api/login' ) {
 
@@ -22,6 +24,12 @@ export class NoopInterceptor implements HttpInterceptor {
         status: 200,
         url: req.url,
         body: login
+      }));
+    } else if ( req.url === 'api/works' ) {
+      return of(new HttpResponse({
+        status: 200,
+        url: req.url,
+        body: works,
       }));
     } else {
       return next.handle(req);

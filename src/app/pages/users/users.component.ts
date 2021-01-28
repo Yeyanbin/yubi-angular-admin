@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserModule } from '@store/user';
 
 @Component({
   selector: 'app-users',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userModule: UserModule) { }
+
+  // works = this.userModule.state.works;
 
   ngOnInit(): void {
+    this.userModule.getWorks();
   }
 
 }
