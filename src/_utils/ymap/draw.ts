@@ -2,8 +2,6 @@ import {  IMap, IMapItem, INode, MAX_COL, MAX_HEIGHT, MAX_ROW, MAX_WIDTH, NODE_D
 import { getLines } from "./line";
 
 
-
-
 // MAX_ROW = deep * (NODE_ROW + NODE_DIFF) - NODE_DIFF
 // 100 = n * ( r + 10 ) - 10 
 // r = (100 + 10) / n - 10 
@@ -38,6 +36,9 @@ export const drawMap = (items: IMapItem[]) => {
     })
   });
 
+  /**
+   * 解决冲突情况要先完成线段重叠优化。把node的旗下线段合并
+   */
   const lineConflict: {
     start: number;
     end: number;
@@ -51,9 +52,7 @@ export const drawMap = (items: IMapItem[]) => {
         node.lines.push(...getLines(node.middle!.x, node.layout!.bottom, child.middle!.x, child.layout!.top, lineConflict, node.layer));
       })))
     
-  
-  console.log(lineConflict);
-  return {
+    return {
     items
   };
 };
