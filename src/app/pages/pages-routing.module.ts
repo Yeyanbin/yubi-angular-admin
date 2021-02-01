@@ -15,6 +15,7 @@ const routes: Routes = [
       { path: 'setting', loadChildren: () => import('./setting/setting.module').then(m => m.SettingModule) },
       { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
       { path: 'markdown', loadChildren: () => import('./markdown/markdown.module').then(m => m.MarkdownModule) },
+      { path: 'ymap', loadChildren: () => import('./ymap/ymap.module').then(m => m.YmapModule) },
     ]
   },
 ];

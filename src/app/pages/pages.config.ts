@@ -44,7 +44,11 @@ export const menu: IMenu = {
         {
           path: '/pages/markdown',
           name: text.menu?.markdown
-        }
+        },
+        {
+          path: '/pages/ymap',
+          name: 'ymap'
+        },
       ]
     },
     {

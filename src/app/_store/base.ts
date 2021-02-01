@@ -62,7 +62,7 @@ export const YubiModule = ({ name }: IModuleOption) =>
   // tslint:disable-next-line:only-arrow-functions
   (target: any): any => {
     // console.log(this);
-    console.log(target);
+    // console.log(target);
     // modules[name] = new target();
     return target;
   };
