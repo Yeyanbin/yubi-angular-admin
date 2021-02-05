@@ -12,12 +12,12 @@
     <ng-container *ngFor="let item of menu.items">
       <li *ngIf="item.type == 'submenu'; else menuItem" 
           nz-submenu nzOpen 
-          [nzTitle]="item.title" 
+          [nzTitle]="item.title()" 
           [nzIcon]="item.icon">
         <ul>
           <li nz-menu-item nzMatchRouter 
             *ngFor="let child of item.childs">
-            <a (click)="changePage(child.name, child.path)" [routerLink]="child.path">{{ child.name }}</a>
+            <a (click)="changePage(child.name, child.path)" [routerLink]="child.path">{{ child.name() }}</a>
           </li>
         </ul>
       </li>
@@ -26,7 +26,7 @@
           <a (click)="changePage(item.name, item.path)" [routerLink]="item.path">
             <i nz-icon [nzType]="item.icon"></i>
             <span>
-              {{ item.name }}
+              {{ item.name() }}
             </span>
           </a>
         </li>

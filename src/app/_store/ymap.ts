@@ -63,9 +63,7 @@ export class YmapModule {
       layer: parentNode.layer + 1,
       lines: [],
     });
-    // console.log('Add parentNode: ' + parentNode.childs);
-    // console.log(this.state);
-    // update
+
     this.update();
   }
 
@@ -77,7 +75,6 @@ export class YmapModule {
   private getNode(layer: number, index: number): INode {
     return this.state.ymap.items[layer].nodeArray[index];
   }
-
   
   public get ymap(): IMap {
     return this.state.ymap;

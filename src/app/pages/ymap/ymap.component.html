@@ -2,10 +2,15 @@
 <div>
   <p>ymap works!</p>
   <button nz-button nzType="primary" (click)="clear()">Clear</button>
+
+  <svg id="d3-container" style="height: 400px;"></svg>
+  <svg id="rect" style="height: 500px;">
+    <path transform = "translate(200, 0)" />
+  </svg>
 </div>
 
 
-
+<!-- 
 
 <div class="ymap-container"
   [style]="'grid-template-column: repeat(' + layout.maxCol + ', ' + 100 / layout.maxCol + '%);' + 
@@ -14,6 +19,7 @@
   <ng-container *ngFor="let aline of ymapModule.ymap.items; let layer = index">
     <div *ngFor="let node of aline.nodeArray; let index = index"
     class="ymap-container-item"
+    (click)="log(node.lines)"
     [style]="
       'grid-column-start:'+ node.layout?.left + 
       ';grid-column-end:'+ node.layout?.right +
@@ -23,10 +29,10 @@
         {{ node.name }}
       </span>
     </div>
-  </ng-container>
+  </ng-container> -->
 
   <!-- 绘制线段 -->
-  <ng-container *ngFor="let aline of ymapModule.ymap.items">
+  <!-- <ng-container *ngFor="let aline of ymapModule.ymap.items">
     <ng-container *ngFor="let node of aline.nodeArray;">
       <div *ngFor="let line of node.lines"
         class="ymap-container-line"
@@ -38,5 +44,5 @@
         
       </div>
     </ng-container>
-  </ng-container>
-</div>
+  </ng-container> 
+</div> -->

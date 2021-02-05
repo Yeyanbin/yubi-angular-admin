@@ -7,7 +7,7 @@
     </span>
     <nz-select [(ngModel)]="layoutModule.lang">
       <ng-container *ngFor="let item of langs">
-        <nz-option [nzValue]="item.value" [nzLabel]="item.label"></nz-option>
+        <nz-option [nzValue]="item.value" [nzLabel]="item.label()"></nz-option>
       </ng-container>    
     </nz-select>
   </div>
@@ -17,7 +17,7 @@
     </span>
     <nz-select [(ngModel)]="layoutModule.siderTheme">
       <ng-container *ngFor="let item of themes">
-        <nz-option [nzValue]="item.value" [nzLabel]="item.label"></nz-option>
+        <nz-option [nzValue]="item.value" [nzLabel]="item.label()"></nz-option>
       </ng-container>    
     </nz-select>
   </div>

@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Action, IHistoryState, YubiModule } from './base';
+import { IText, text } from '@utils/lang';
+import { Action, YubiModule } from './base';
 
 // tslint:disable:no-conditional-assignment
-
+export interface IHistoryState {
+  list: {
+    name: () => string;
+    url: string;
+  }[];
+  onShow: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +23,7 @@ export class HistoryModule {
 
   state: IHistoryState = {
     list: [],
-    onShow: ''
+    onShow: '',
   };
 
   /**
@@ -25,14 +32,14 @@ export class HistoryModule {
    * @param url is router url
    */
   @Action({ log: 'add history action' })
-  public addHistory(name: string, url: string): void {
+  public addHistory(name: () => string, url: string): void {
 
     if ( !this.state.list.find((item) => {
-      return item.name === name;
+      return item.name() === name();
     }) ) {
       this.state.list.push({ name, url });
     }
-    this.state.onShow = name;
+    this.state.onShow = name();
   }
 
   /**
@@ -40,7 +47,7 @@ export class HistoryModule {
    * @param name delete item that item.name === name
    */
   @Action()
-  public removeHistory(name: string): void {
-    this.state.list = this.state.list.filter((item) => item.name !== name);
+  public removeHistory(name: () => string): void {
+    this.state.list = this.state.list.filter((item) => item.name() !== name());
   }
 }

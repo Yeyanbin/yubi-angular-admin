@@ -1,12 +1,12 @@
-import { langType } from '@utils/lang';
+import { IText, langType, text, update } from '@utils/lang';
 import { getLocalTheme, setLocalLang, setLocalTheme } from '@utils/storage';
-import { YubiModule, Module } from './base';
+import { YubiModule, Module, PropertyDecorator } from './base';
 import { getLocalLang } from '@utils/storage';
 import { NzMenuThemeType } from 'ng-zorro-antd/menu';
 import { Injectable } from '@angular/core';
 import {  Router } from '@angular/router';
 import { HistoryModule } from './history';
-import { menu } from '../pages/pages.config';
+import { PagesConfig } from '../pages/pages.config';
 
 // tslint:disable:no-unused-expression
 
@@ -18,7 +18,7 @@ export interface ILayoutState {
   keyDown: { [arg: string]: boolean };
   keyDownFunc: { [func: string]: () => void};
   dfsMenus: {
-    name: string;
+    name: () => string;
     path: string;
   }[];
 }
@@ -33,35 +33,37 @@ export class LayoutModule extends Module<ILayoutState>{
 
   constructor(
     private router: Router,
-    private historyModule: HistoryModule) {
+    private historyModule: HistoryModule,
+    private pagesConfig: PagesConfig) {
       super();
       this.init();
       // console.log('layout');
       // console.log(this instanceof Module);
       // console.log(this instanceof LayoutModule);
   }
-
+  
+  @PropertyDecorator()
   state: ILayoutState = {
     isCollapsed: false,
     lang: getLocalLang() || 'en-uk',
     siderTheme: getLocalTheme() || 'light',
     keyDown: {},
     keyDownFunc: {},
-    dfsMenus: []
+    dfsMenus: [],
   };
 
 
   private init(): void {
 
-    const dfsMenu = (items: any[], container: {path: string; name: string}[]): any =>
+    const dfsMenu = (items: any[], container: {path: string; name: ()=> string}[]): any =>
       items.forEach((item) =>
         item.childs ?
           dfsMenu(item.childs, container) :
           container.push({name: item.name, path: item.path}));
 
 
-    const menus: {path: string; name: string}[] = this.state.dfsMenus;
-    dfsMenu(menu.items, menus);
+    const menus: {path: string; name: () => string}[] = this.state.dfsMenus;
+    dfsMenu(this.pagesConfig.menu.items, menus);
 
     // this.historyModule.state.list.push(
     //   {name: this.historyModule.state.onShow = menus[0].name,
@@ -124,8 +126,10 @@ export class LayoutModule extends Module<ILayoutState>{
   public set lang(v: langType) {
     this.state.lang = v;
     setLocalLang(v);
+    update();
+    // console.log(text.menu);
     // window.location.reload(); reload的静态页面部署会出现问题
-    window.location.replace('./');
+    // window.location.replace('./');
   }
 
 

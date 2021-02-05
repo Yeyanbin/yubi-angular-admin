@@ -12,14 +12,6 @@ export class Module<T> {
 
 
 
-export interface IHistoryState {
-  list: {
-    name: string;
-    url: string;
-  }[];
-  onShow: string;
-}
-
 interface IActionOption {
   log?: string;
 }
@@ -66,6 +58,14 @@ export const YubiModule = ({ name }: IModuleOption) =>
     // modules[name] = new target();
     return target;
   };
+
+
+export const PropertyDecorator = () => {
+  return function (...arg: any) {
+    // target[propertyName] = new Proxy()
+    console.log(arg);
+  }
+}
 
 
 

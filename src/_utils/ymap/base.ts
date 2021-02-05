@@ -57,7 +57,6 @@ B从下连结点出发，到达C的上连结点
 C从下连结点出发，到达D的上连结点
  */
 
-import { drawMap } from "./draw";
 import { ILine } from "./line";
 
 export const MAX_ROW = 300;

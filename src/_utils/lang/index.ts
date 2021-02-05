@@ -8,7 +8,7 @@ const DEFAULT_LANG: langType = 'en-uk';
 
 export type langType = 'zh-cn' | 'zh-hk' | 'en-uk' | 'ja-jp';
 
-type lang = {
+export type lang = {
   [key in langType]: IText;
 };
 
@@ -84,4 +84,19 @@ export let text: IText = new Proxy(data, {
     }
   }
 });
+
+export const update = () => {
+
+  LOCAL_LANG = getLocalLang();
+  // text = new Proxy(data, {
+  //   get(target: lang, propKey: string): IText {
+  //     if (propKey in target[LOCAL_LANG]) {
+  //       return target[LOCAL_LANG][propKey];
+  //     } else {
+  //       // LOCAL_LANG 不存在，使用默认语言
+  //       return target[DEFAULT_LANG][propKey];
+  //     }
+  //   }
+  // });
+}
 

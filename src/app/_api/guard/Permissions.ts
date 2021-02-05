@@ -20,13 +20,13 @@ export class LoginGuard implements CanActivate{
 
     if ( this.userModule.state.userID && this.userModule.state.tokenID ) {
       const url = state.url;
-      let routerName = '';
+      let routerName;
       this.layoutModule.state.dfsMenus.forEach(({ name, path }) => {
         if ( url === path ) {
           routerName = name;
         }
       });
-      this.historyModule.addHistory(routerName, url);
+      routerName && this.historyModule.addHistory(routerName, url);
       return true;
     } else {
       this.router.navigateByUrl('/login');

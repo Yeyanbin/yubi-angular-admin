@@ -10,10 +10,10 @@
     </span>
     <nz-tag *ngFor="let item of historyModule.state.list" 
       nzMode="closeable"
-      [nzColor]="historyModule.state.onShow === item.name ?'processing': 'default'"
+      [nzColor]="historyModule.state.onShow === item.name() ?'processing': 'default'"
       [routerLink]="item.url"
-      (click)="historyModule.state.onShow = item.name"
-      (nzOnClose)="historyModule.removeHistory(item.name)">{{ item.name }}</nz-tag>
+      (click)="historyModule.state.onShow = item.name()"
+      (nzOnClose)="historyModule.removeHistory(item.name)">{{ item.name() }}</nz-tag>
 
   </div>
   <div class="app-header-user">

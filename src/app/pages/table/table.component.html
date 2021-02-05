@@ -4,16 +4,18 @@
     <nz-card nzHoverable class="table-card" [nzCover]="table1Cover">
       <nz-card-meta nzTitle="Table 1" nzDescription="">
       </nz-card-meta>
+      <button (click)="exportExcel()">导出</button>
     </nz-card>
     <ng-template #table1Cover>
       <nz-table #basicTable 
+        id="basic-table-1"
         class="table-card-content"
         [nzShowPagination]="false"
         [nzScroll]="{ y: '400px' }"
         [nzData]="table1.items">
         <thead>
           <tr>
-            <th *ngFor="let item of table1.heads">{{ item }}</th>
+            <th *ngFor="let item of table1.heads">{{ item.title }}</th>
           </tr>
         </thead>
         <tbody>
@@ -41,7 +43,7 @@
         [nzData]="table2.items">
         <thead>
           <tr>
-            <th *ngFor="let item of table2.heads">{{ item }}</th>
+            <th *ngFor="let item of table2.heads">{{ item.title }}</th>
           </tr>          
         </thead>
         <tbody>

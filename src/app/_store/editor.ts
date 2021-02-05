@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Action, IHistoryState, YubiModule } from './base';
+import { Action, YubiModule } from './base';
 
 // tslint:disable:no-conditional-assignment
 

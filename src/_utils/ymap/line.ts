@@ -10,6 +10,8 @@
  *  2. 到不相邻点的线。（这里可以绕过右边）// 暂不考虑
  */
 
+import { min } from "rxjs/operators";
+
 // import { NODE_DIFF } from "./base";
 /**
  * 邻近点的通道 
@@ -37,29 +39,13 @@ export interface ILine {
   y_2: number;
 }
 
-export const getLines = (x1: number, y1: number, x2: number, y2: number, 
-  lineConflict: { start: number; end: number; }[][], layer: number): ILine[] => {
+export const getLines = (x1: number, y1: number, x2: number, y2: number, y: number, y_line: { start: number, end: number }): ILine[] => {
   
-  const layerConflict = lineConflict[layer];
-  let y = Math.floor((y1 + y2) /2);
-
-  if (layerConflict) {
-    for ( let index = 0 ; layerConflict[index] ; index++ ) {
-
-      const item = layerConflict[index];
-      if (!( item.start >= Math.max(x1, x2) || item.end <= Math.min(x1, x2) )) {
-        y += Math.floor(LINE_OFFSET / 5);
-        // console.log('must add y')
-        break;
-      }
-    }
-  } else {
-    lineConflict[layer] = [{start: Math.min(x1, x2), end: Math.max(x1, x2)}]
-  }
+  y_line.start > Math.min(x1, x2) && (y_line.start = Math.min(x1, x2));
+  y_line.end < Math.max(x1, x2) && (y_line.end = Math.max(x1, x2));
 
   return [
-    { x_1: x1, y_1: y1, x_2: x1, y_2: y },
-    { x_1: x1, y_1: y, x_2: x2, y_2: y },
+    // { x_1: x1, y_1: y1, x_2: x1, y_2: y },
     { x_1: x2, y_1: y, x_2: x2, y_2: y2 },
   ]
 }
